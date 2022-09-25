@@ -40,7 +40,6 @@
 namespace Modeles;
 
 use PDO;
-use PDOStatement;
 use Outils\Utilitaires;
 
 require '../config/bdd.php';
@@ -91,13 +90,35 @@ class PdoGsb
      *
      * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
      */
-    public function getInfosVisiteur($login, $mdp): PDOStatement
+    public function getInfosVisiteur($login, $mdp): array
     {
         $requetePrepare = $this->connexion->prepare(
             'SELECT visiteur.id AS id, visiteur.nom AS nom, '
             . 'visiteur.prenom AS prenom '
             . 'FROM visiteur '
             . 'WHERE visiteur.login = :unLogin AND visiteur.mdp = :unMdp'
+        );
+        $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMdp', $mdp, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $requetePrepare->fetch();
+    }
+
+    /**
+     * Retourne les informations d'un comptable
+     *
+     * @param String $login Login du comptable
+     * @param String $mdp   Mot de passe du comptable
+     *
+     * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
+     */
+    public function getInfosComptable($login, $mdp): array
+    {
+        $requetePrepare = $this->connexion->prepare(
+            'SELECT comptable.id AS id, comptable.nom AS nom, '
+            . 'comptable.prenom AS prenom '
+            . 'FROM comptable '
+            . 'WHERE comptable.login = :unLogin AND comptable.mdp = :unMdp'
         );
         $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMdp', $mdp, PDO::PARAM_STR);
@@ -192,7 +213,7 @@ class PdoGsb
      *
      * @return un tableau associatif
      */
-    public function getLesIdFrais(): PDOStatement
+    public function getLesIdFrais(): array
     {
         $requetePrepare = $this->connexion->prepare(
             'SELECT fraisforfait.id as idfrais '

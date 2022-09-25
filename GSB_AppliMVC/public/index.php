@@ -25,6 +25,7 @@ session_start();
 
 $pdo = PdoGsb::getPdoGsb();
 $estConnecte = Utilitaires::estConnecte();
+$estConnecteComptable = Utilitaires::estConnecteComptable();
 
 require PATH_VIEWS . 'v_entete.php';
 
