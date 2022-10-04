@@ -30,16 +30,6 @@ abstract class Utilitaires
     }
 
     /**
-     * Teste si un quelconque comptable est connecté
-     *
-     * @return vrai ou faux
-     */
-    public static function estConnecteComptable(): bool
-    {
-        return isset($_SESSION['idComptable']);
-    }
-
-    /**
      * Enregistre dans une variable session les infos d'un visiteur
      *
      * @param String $idVisiteur ID du visiteur
@@ -51,22 +41,6 @@ abstract class Utilitaires
     public static function connecter($idVisiteur, $nom, $prenom): void
     {
         $_SESSION['idVisiteur'] = $idVisiteur;
-        $_SESSION['nom'] = $nom;
-        $_SESSION['prenom'] = $prenom;
-    }
-
-    /**
-     * Enregistre dans une variable session les infos d'un comptable
-     *
-     * @param String $idComptable ID du comptable
-     * @param String $nom        Nom du comptable
-     * @param String $prenom     Prénom du comptable
-     *
-     * @return null
-     */
-    public static function connecterComptable($idComptable, $nom, $prenom): void
-    {
-        $_SESSION['idComptable'] = $idComptable;
         $_SESSION['nom'] = $nom;
         $_SESSION['prenom'] = $prenom;
     }
