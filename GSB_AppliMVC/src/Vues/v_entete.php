@@ -18,29 +18,29 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta charset="UTF-8">
-        <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title> 
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
-        <link href="./styles/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-            <?php
-            $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            if ($estConnecte) {
-                ?>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>Intranet du Laboratoire Galaxy-Swiss Bourdin</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="./styles/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <?php
+        $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ($estConnecte) {
+        ?>
             <div class="header">
                 <div class="row vertical-align">
                     <div class="col-md-4">
                         <h1>
-                            <img src="./images/logo.jpg" class="img-responsive" 
-                                 alt="Laboratoire Galaxy-Swiss Bourdin" 
-                                 title="Laboratoire Galaxy-Swiss Bourdin">
+                            <img src="./images/logo.jpg" class="img-responsive" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin">
                         </h1>
                     </div>
                     <div class="col-md-8">
@@ -51,20 +51,19 @@
                                     Accueil
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'gererFrais') { ?>class="active"<?php } ?>>
+                            <li <?php if ($uc == 'gererFrais') { ?>class="active" <?php } ?>>
                                 <a href="index.php?uc=gererFrais&action=saisirFrais">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                     Renseigner la fiche de frais
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'etatFrais') { ?>class="active"<?php } ?>>
+                            <li <?php if ($uc == 'etatFrais') { ?>class="active" <?php } ?>>
                                 <a href="index.php?uc=etatFrais&action=selectionnerMois">
                                     <span class="glyphicon glyphicon-list-alt"></span>
                                     Afficher mes fiches de frais
                                 </a>
                             </li>
-                            <li 
-                            <?php if ($uc == 'deconnexion') { ?>class="active"<?php } ?>>
+                            <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
                                 <a href="index.php?uc=deconnexion&action=demandeDeconnexion">
                                     <span class="glyphicon glyphicon-log-out"></span>
                                     Déconnexion
@@ -74,42 +73,39 @@
                     </div>
                 </div>
             </div>
-            <?php
-            } else if ($estConnecteComptable) {
-                ?>
+        <?php
+        } else if ($estConnecteComptable) {
+        ?>
             <div class="header">
                 <div class="row vertical-align">
                     <div class="col-md-4">
                         <h1>
-                            <img src="./images/logo.jpg" class="img-responsive" 
-                                 alt="Laboratoire Galaxy-Swiss Bourdin" 
-                                 title="Laboratoire Galaxy-Swiss Bourdin">
+                            <img src="./images/logo.jpg" class="img-responsive" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin">
                         </h1>
                     </div>
                     <div class="col-md-8">
                         <ul class="nav nav-pills pull-right" role="tablist">
                             <li <?php if (!$uc || $uc == 'accueil') { ?>class="active" <?php } ?>>
-                                <a href="index.php" style="background-color :#ff9933" >
-                                    <span class="glyphicon glyphicon-home" ></span>
+                                <a href="index.php" style="background-color :#ff9933">
+                                    <span class="glyphicon glyphicon-home"></span>
                                     Accueil
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'gererFrais') { ?>class="active"<?php } ?>>
-                                <a href="index.php?uc=gererFrais&action=saisirFrais" style = "color : #ff9933">
-                                    <span class="glyphicon glyphicon-pencil"  style = "color : #ff9933" ></span>
+                            <li <?php if ($uc == 'gererFrais') { ?>class="active" <?php } ?>>
+                                <a href="index.php?uc=gererFrais&action=saisirFrais" style="color : #ff9933">
+                                    <span class="glyphicon glyphicon-pencil" style="color : #ff9933"></span>
                                     Valider les fiches de frais
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'etatFrais') { ?>class="active"<?php } ?>>
-                                <a href="index.php?uc=etatFrais&action=selectionnerMois" style = "color : #ff9933">
-                                    <span class="glyphicon glyphicon-list-alt" style = "color : #ff9933"></span>
+                            <li <?php if ($uc == 'etatFrais') { ?>class="active" <?php } ?>>
+                                <a href="" style="color : #ff9933">
+                                    <span class="glyphicon glyphicon-list-alt" style="color : #ff9933"></span>
                                     Suivre les paiements de fiche de frais
                                 </a>
                             </li>
-                            <li 
-                            <?php if ($uc == 'deconnexion') { ?>class="active"<?php } ?>>
-                                <a href="index.php?uc=deconnexion&action=demandeDeconnexion" style = "color : #ff9933">
-                                    <span class="glyphicon glyphicon-log-out" style = "color : #ff9933"></span>
+                            <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
+                                <a href="index.php?uc=deconnexion&action=demandeDeconnexion" style="color : #ff9933">
+                                    <span class="glyphicon glyphicon-log-out" style="color : #ff9933"></span>
                                     Déconnexion
                                 </a>
                             </li>
@@ -117,14 +113,11 @@
                     </div>
                 </div>
             </div>
-            <?php
-            } else {
-                ?>   
-                <h1>
-                    <img src="./images/logo.jpg"
-                         class="img-responsive center-block"
-                         alt="Laboratoire Galaxy-Swiss Bourdin"
-                         title="Laboratoire Galaxy-Swiss Bourdin">
-                </h1>
-                <?php
-            }
+        <?php
+        } else {
+        ?>
+            <h1>
+                <img src="./images/logo.jpg" class="img-responsive center-block" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin">
+            </h1>
+        <?php
+        }

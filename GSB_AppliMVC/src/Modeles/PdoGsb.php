@@ -90,7 +90,7 @@ class PdoGsb
      *
      * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
      */
-    public function getInfosVisiteur($login, $mdp): array
+    public function getInfosVisiteur($login, $mdp): array|bool
     {
         $requetePrepare = $this->connexion->prepare(
             'SELECT visiteur.id AS id, visiteur.nom AS nom, '
@@ -112,7 +112,7 @@ class PdoGsb
      *
      * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
      */
-    public function getInfosComptable($login, $mdp): array
+    public function getInfosComptable($login, $mdp): array|bool
     {
         $requetePrepare = $this->connexion->prepare(
             'SELECT comptable.id AS id, comptable.nom AS nom, '

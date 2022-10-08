@@ -29,16 +29,25 @@ switch ($action) {
     case 'valideConnexion':
         $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $visiteur = $pdo->getInfosComptable($login, $mdp);
+        $visiteur = $pdo->getInfosVisiteur($login, $mdp);
+        $comptable = $pdo->getInfosComptable($login, $mdp);
         if (!is_array($visiteur)) {
-            Utilitaires::ajouterErreur('Login ou mot de passe incorrect');
-            include PATH_VIEWS . 'v_erreurs.php';
-            include PATH_VIEWS . 'v_connexion.php';
+            if (!is_array($comptable)) {
+                Utilitaires::ajouterErreur('Login ou mot de passe incorrect');
+                include PATH_VIEWS . 'v_erreurs.php';
+                include PATH_VIEWS . 'v_connexion.php';
+            } else {
+                $id = $comptable['id'];
+                $nom = $comptable['nom'];
+                $prenom = $comptable['prenom'];
+                Utilitaires::connecterComptable($id, $nom, $prenom);
+                header('Location: index.php');
+            }
         } else {
             $id = $visiteur['id'];
             $nom = $visiteur['nom'];
             $prenom = $visiteur['prenom'];
-            Utilitaires::connecterComptable($id, $nom, $prenom);
+            Utilitaires::connecter($id, $nom, $prenom);
             header('Location: index.php');
         }
         break;

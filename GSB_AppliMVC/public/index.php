@@ -31,7 +31,7 @@ require PATH_VIEWS . 'v_entete.php';
 
 $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-if ($uc && !$estConnecte) {
+if ($uc && !$estConnecte && !$estConnecteComptable) {
     $uc = 'connexion';
 } elseif (empty($uc)) {
     $uc = 'accueil';
