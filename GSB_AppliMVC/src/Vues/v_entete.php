@@ -91,8 +91,8 @@
                                     Accueil
                                 </a>
                             </li>
-                            <li <?php if ($uc == 'gererFrais') { ?>class="active" <?php } ?>>
-                                <a href="index.php?uc=gererFrais&action=saisirFrais" style="color : #ff9933">
+                            <li <?php if ($uc == 'validerFrais') { ?>class="active" <?php } ?>>
+                                <a href="index.php?uc=validerFrais&action=validationFrais" style="color : #ff9933">
                                     <span class="glyphicon glyphicon-pencil" style="color : #ff9933"></span>
                                     Valider les fiches de frais
                                 </a>

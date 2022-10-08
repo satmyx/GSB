@@ -105,6 +105,24 @@ class PdoGsb
     }
 
     /**
+     * Retourne la liste des visiteurs
+     * 
+     * @return listeVisiteurs, la liste des visiteurs (leurs noms).
+     */
+    public function getToutLesVisiteurs()
+    {
+        $requetePrepare = $this->connexion->prepare(
+            'SELECT visiteur.id AS id, '
+            . 'visiteur.nom AS nom, '
+            . 'visiteur.prenom AS prenom '
+            . 'FROM visiteur '
+            . 'ORDER BY visiteur.nom, visiteur.prenom '
+        );
+        $requetePrepare->execute();
+        return $requetePrepare->fetchAll();
+    }
+
+    /**
      * Retourne les informations d'un comptable
      *
      * @param String $login Login du comptable
