@@ -7,15 +7,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : dylan.esculier
 */
 
+:root{
+    --orange-gsb-comptable: #ff9933;
+}
+
 a {
-    color: #ff9933;
+    color: var(--orange-gsb-comptable);
     text-decoration: none;
 }
 a:hover{
-    color: #ff9933;
+    color: var(--orange-gsb-comptable);
     text-decoration: none;
 }
 .nav-pills > li.active > a,.nav-pills > li.active > a:hover,.nav-pills > li.active > a:focus {
     color: #fff;
-    background-color: #ff9933;
+    background-color: var(--orange-gsb-comptable);
 }
