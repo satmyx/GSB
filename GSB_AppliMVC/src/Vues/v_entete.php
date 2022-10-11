@@ -26,8 +26,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="./styles/style.css" rel="stylesheet">
+    <link href="./styles/bootstrap/bootstrap.css" rel='stylesheet'>
 </head>
 
 <body>
@@ -75,6 +75,7 @@
             </div>
         <?php
         } else if ($estConnecteComptable) {
+            echo "<link href='./styles/stylecompta.css' rel='stylesheet'>"
         ?>
             <div class="header">
                 <div class="row vertical-align">
@@ -86,26 +87,26 @@
                     <div class="col-md-8">
                         <ul class="nav nav-pills pull-right" role="tablist">
                             <li <?php if (!$uc || $uc == 'accueil') { ?>class="active" <?php } ?>>
-                                <a href="index.php" style="background-color :#ff9933">
+                                <a href="index.php">
                                     <span class="glyphicon glyphicon-home"></span>
                                     Accueil
                                 </a>
                             </li>
                             <li <?php if ($uc == 'validerFrais') { ?>class="active" <?php } ?>>
-                                <a href="index.php?uc=validerFrais&action=validationFrais" style="color : #ff9933">
-                                    <span class="glyphicon glyphicon-pencil" style="color : #ff9933"></span>
+                                <a href="index.php?uc=validerFrais&action=validationFrais">
+                                    <span class="glyphicon glyphicon-ok"></span>
                                     Valider les fiches de frais
                                 </a>
                             </li>
                             <li <?php if ($uc == 'etatFrais') { ?>class="active" <?php } ?>>
-                                <a href="" style="color : #ff9933">
-                                    <span class="glyphicon glyphicon-list-alt" style="color : #ff9933"></span>
+                                <a href="">
+                                    <span class="glyphicon glyphicon-euro"></span>
                                     Suivre les paiements de fiche de frais
                                 </a>
                             </li>
                             <li <?php if ($uc == 'deconnexion') { ?>class="active" <?php } ?>>
-                                <a href="index.php?uc=deconnexion&action=demandeDeconnexion" style="color : #ff9933">
-                                    <span class="glyphicon glyphicon-log-out" style="color : #ff9933"></span>
+                                <a href="index.php?uc=deconnexion&action=demandeDeconnexion">
+                                    <span class="glyphicon glyphicon-log-out"></span>
                                     Déconnexion
                                 </a>
                             </li>
