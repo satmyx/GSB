@@ -3,30 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp64/www/GSB/resources/Outils/Utilitaires.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Controleurs/c_gererFrais.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_pied.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Modeles/PdoGsb.php</file>
-            <file>file:/D:/wamp64/www/GSB/bin/gendatas/majGSB.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_deconnexion.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_connexion.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_listeFraisForfait.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Controleurs/c_deconnexion.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_erreurs.php</file>
-            <file>file:/D:/wamp64/www/GSB/composer.json</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_listeFraisHorsForfait.php</file>
-            <file>file:/D:/wamp64/www/GSB/config/define.php</file>
-            <file>file:/D:/wamp64/www/GSB/public/.htaccess</file>
-            <file>file:/D:/wamp64/www/GSB/vendor/composer/autoload_psr4.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_listeMois.php</file>
-            <file>file:/D:/wamp64/www/GSB/bin/gendatas/fonctions.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_etatFrais.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_entete.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Controleurs/c_etatFrais.php</file>
-            <file>file:/D:/wamp64/www/GSB/public/index.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Controleurs/c_connexion.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Vues/v_accueil.php</file>
-            <file>file:/D:/wamp64/www/GSB/src/Controleurs/c_accueil.php</file>
+            <file>file:/E:/Cours%202ème%20année/GIL/Atelier%20de%20professionnalisation/Projet%20Semestre%201%20-%20GSB/GSB/GSB_AppliMVC/composer.json</file>
+            <file>file:/E:/Cours%202ème%20année/GIL/Atelier%20de%20professionnalisation/Projet%20Semestre%201%20-%20GSB/GSB/GSB_AppliMVC/src/Modeles/PdoGsb.php</file>
+            <file>file:/E:/Cours%202ème%20année/GIL/Atelier%20de%20professionnalisation/Projet%20Semestre%201%20-%20GSB/GSB/GSB_AppliMVC/src/Vues/v_test.php</file>
+            <file>file:/E:/Cours%202ème%20année/GIL/Atelier%20de%20professionnalisation/Projet%20Semestre%201%20-%20GSB/GSB/GSB_AppliMVC/tests/test.txt</file>
+            <file>file:/E:/Cours%202ème%20année/GIL/Atelier%20de%20professionnalisation/Projet%20Semestre%201%20-%20GSB/GSB/GSB_AppliMVC/vendor/fpdf184/fpdf.php</file>
         </group>
     </open-files>
 </project-private>
