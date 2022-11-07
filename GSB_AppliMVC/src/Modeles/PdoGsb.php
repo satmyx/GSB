@@ -273,6 +273,39 @@ class PdoGsb
         }
     }
 
+      /**
+   *  Modifier les elements d'une fiche hors frais 
+   * 
+   * 
+   * @param type $idVisiteur id du visiteur
+   * @param type $mois le mois de la modif
+   * @param Array $lesHorsForfaitLibelle  libelle de la fiche hors frais
+   * @param type $lesHorsForfaitMontant montant de la fiche hors frais
+   * @param type $lesHorsForfaitDate date de la fiche hors frais
+   */
+  public function majFraisHorsForfait($idVisiteur, $mois, $lesHorsForfaitLibelle, $lesHorsForfaitMontant, $lesHorsForfaitDate) {
+    $lesCles = array_keys($lesHorsForfaitLibelle);
+    foreach ($lesCles as $unIdHorsFrais) {
+      $libelle = $lesHorsForfaitLibelle[$unIdHorsFrais];
+      $montant = $lesHorsForfaitMontant[$unIdHorsFrais];
+      $date = $lesHorsForfaitDate[$unIdHorsFrais];
+      $requetePrepare = $this->connexion->prepare(
+        'UPDATE lignefraishorsforfait '
+        . 'SET lignefraishorsforfait.libelle = :unLibelle, lignefraishorsforfait.montant = :unMontant, lignefraishorsforfait.date = :uneDate '
+        . 'WHERE lignefraishorsforfait.idvisiteur = :unIdVisiteur '
+        . 'AND lignefraishorsforfait.mois = :unMois '
+        . 'AND lignefraishorsforfait.id = :unId'
+      );
+      $requetePrepare->bindParam(':unLibelle', $libelle, PDO::PARAM_STR);
+      $requetePrepare->bindParam(':unMontant', $montant, PDO::PARAM_STR);
+      $requetePrepare->bindParam(':uneDate', $date, PDO::PARAM_STR);
+      $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+      $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+      $requetePrepare->bindParam(':unId', $unIdHorsFrais, PDO::PARAM_INT);
+      $requetePrepare->execute();
+    }
+  }
+
     /**
      * Met à jour le nombre de justificatifs de la table ficheFrais
      * pour le mois et le visiteur concerné
@@ -466,6 +499,39 @@ class PdoGsb
     }
 
     /**
+     * Retourne les mois pour lesquel un visiteur a une fiche de frais CL
+     *
+     * @param String $idVisiteur ID du visiteur
+     *
+     * @return un tableau associatif de clé un mois -aaaamm- et de valeurs
+     *         l'année et le mois correspondant
+     */
+    public function getLesMoisDisponiblesCL(string $idVisiteur) {
+        $idEtat = 'CL';
+        $requetePrepare = $this->connexion->prepare(
+        'SELECT fichefrais.mois AS mois FROM fichefrais '
+        . 'WHERE fichefrais.idvisiteur = :unIdVisiteur '
+        . 'AND fichefrais.idetat = :idEtat '
+        . 'ORDER BY fichefrais.mois desc'
+        );
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':idEtat', $idEtat, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $lesMois = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+        $mois = $laLigne['mois'];
+        $numAnnee = substr($mois, 0, 4);
+        $numMois = substr($mois, 4, 2);
+        $lesMois[] = array(
+            'mois' => $mois,
+            'numAnnee' => $numAnnee,
+            'numMois' => $numMois
+        );
+        }
+        return $lesMois;
+    }
+
+    /**
      * Retourne les informations d'une fiche de frais d'un visiteur pour un
      * mois donné
      *
@@ -475,7 +541,7 @@ class PdoGsb
      * @return un tableau avec des champs de jointure entre une fiche de frais
      *         et la ligne d'état
      */
-    public function getLesInfosFicheFrais($idVisiteur, $mois): array
+    public function getLesInfosFicheFrais($idVisiteur, $mois): array|bool
     {
         $requetePrepare = $this->connexion->prepare(
             'SELECT fichefrais.idetat as idEtat, '
