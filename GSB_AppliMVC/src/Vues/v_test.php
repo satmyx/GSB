@@ -7,8 +7,9 @@ class PDF extends FPDF {
     
     // Header de la page
     function Header() {
+        $linkLogoGSB = '../../public/images/logo.jpg';
         // Logo GSB
-        $this->Image('../../public/images/logo.jpg', 80, 10, 40);
+        $this->Image($linkLogoGSB, ($this->GetPageWidth()/2) - 20, $this->lMargin, 40);
     }
     
     function getSignatureComptable() {
@@ -34,6 +35,8 @@ class PDF extends FPDF {
     // Informations du patient
     function getInfosVisiteur() 
     {
+        $this->SetTextColor(0);
+        
         $prenomVisiteur = 'Louis';
         $nomVisiteur = 'VILLECHALANE';
         $mois = 'Juillet';
@@ -41,17 +44,17 @@ class PDF extends FPDF {
 
         $this->SetFont('Arial', '', 10); 
 
-        $this->Cell(0,10,'Visiteur',0,0,'L');
+        $this->Cell(0, 0, 'Visiteur', 0, 0, 'L');
         $this->SetX($this->lMargin);
-        $this->Cell(0,10,'NRD/A-131',0,0,'C');
+        $this->Cell(0, 0, 'NRD/A-131', 0, 0, 'C');
         $this->SetX($this->lMargin);
-        $this->Cell( 0, 10, $prenomVisiteur . ' ' . $nomVisiteur, 0, 0, 'R');
+        $this->Cell(0, $this->lMargin, $prenomVisiteur . ' ' . $nomVisiteur, 0, 0, 'R');
        
         $this->setY($this->GetY()+10);
         
         $this->Cell(0,10,'Mois',0,0,'L');
         $this->SetX($this->lMargin);
-        $this->Cell(0,10,$mois . ' ' . $annee,0,0,'C');
+        $this->Cell(0, 0, $mois . ' ' . $annee, 0, 0, 'C');
     }
 
     // Get data from the text file
@@ -84,7 +87,33 @@ class PDF extends FPDF {
             $this->Ln(); // Set current position
         }
     }*/
-  
+    
+        function getPrimaryTable($header, $data) {
+        
+        // Colors, line width and bold font
+        $this->SetFillColor(255, 255, 255);
+        $this->SetTextColor(30, 73, 125);
+        $this->SetDrawColor(30, 73, 125);
+        $this->SetLineWidth(.3);
+        $this->SetFont('', 'B');
+        
+        // Header
+        $calculColonneCenter = ($this->GetPageWidth()-2*$this->lMargin);
+        $colWidth = array($calculColonneCenter);
+        for($i = 0; $i < count($header); $i++)
+            $this->Cell($colWidth[$i], 7, 
+                        $header[$i], 1, 0, 'C', 1);
+        $this->Ln();
+        
+        $this->SetXY($this->lMargin, 50);
+        // Encadré
+        $this->Rect($this->GetX(), $this->GetY(), $this->GetPageWidth() - 2 * $this->lMargin, $this->GetY()+100);
+
+        $this->SetLeftMargin(20);
+        $this->SetRightMargin(20);
+        
+    }
+    
     // Get styled table
     function getStyledTable($header, $data) {
         
@@ -95,8 +124,13 @@ class PDF extends FPDF {
         $this->SetLineWidth(.3);
         $this->SetFont('', 'B');
         
+        // Marge
+        $this->SetLeftMargin(20);
+        $this->SetRightMargin(20);
+        
         // Header
-        $colWidth = array(40, 35, 40, 45);
+        $calculColonneCenter = ($this->GetPageWidth() - 2 * $this->lMargin) / count($header);
+        $colWidth = array($calculColonneCenter, $calculColonneCenter, $calculColonneCenter, $calculColonneCenter);
         for($i = 0; $i < count($header); $i++)
             $this->Cell($colWidth[$i], 7, 
                         $header[$i], 1, 0, 'C', 1);
@@ -127,13 +161,11 @@ class PDF extends FPDF {
         $this->Cell(array_sum($colWidth), 0, '', 'T');
     }
 }
+    
     // Instantiate a PDF object
     $pdf = new PDF();
   
     $pdf->SetTitle('Fiche de frais de XXX');
-    
-    // Column titles given by the programmer
-    $header = array('Frais forfaitaires', utf8_decode('Quantité'),'Montant unitaire','Total');
     
     // Get data from the text files
     $data = $pdf->getDataFrmFile('../../tests/test.txt');
@@ -146,18 +178,36 @@ class PDF extends FPDF {
     // $pdf->getSimpleTable($header,$data);
     $pdf->AddPage();
     
-    $pdf->SetTextColor(30, 73, 125);
-    $pdf->Cell(0,80,utf8_decode('REMBOURSEMENT DE FRAIS ENGAGÉS'),0,0,'C');
-    
-    $pdf->SetXY(10, 80);
+    $pdf->SetXY(10, 70);
     
     $pdf->getInfosVisiteur();
     
+    $pdf->SetXY(10, 50);
+    
+
+    // Column titles given by the programmer
+    $header = array(utf8_decode('REMBOURSEMENT DE FRAIS ENGAGÉS'));
+    $pdf->getPrimaryTable($header, $data);
+    
     $pdf->SetXY(10, 100);
     
+    // Column titles given by the programmer
+    $header = array('Frais forfaitaires', utf8_decode('Quantité'),'Montant unitaire','Total');
+    $pdf->getStyledTable($header, $data);
+    
+    $pdf->SetTextColor(30, 73, 125);
+    $pdf->SetFont('', 'B');
+    $text = 'Autres frais';
+    $pdf->Text(($pdf->GetPageWidth()/2) - $pdf->GetStringWidth($text) / 2, $pdf->GetY() + 11, $text);
+    
+    $header = array('Date', utf8_decode('Libellé'),'Montant');
+    $pdf->SetXY(10, $pdf->getY()+20);
     $pdf->getStyledTable($header,$data);
+
     
     $pdf->getSignatureComptable();
+    
+    $pdf->Footer();
     
     $pdf->Output();
 ?>
