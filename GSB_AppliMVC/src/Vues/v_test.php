@@ -41,18 +41,19 @@ class PDF extends FPDF {
         $nomVisiteur = 'VILLECHALANE';
         $mois = 'Juillet';
         $annee = '2022';
-
-        $this->SetFont('Arial', '', 10); 
-
-        $this->Cell(0, 0, 'Visiteur', 0, 0, 'L');
-        $this->SetX($this->lMargin);
-        $this->Cell(0, 0, 'NRD/A-131', 0, 0, 'C');
-        $this->SetX($this->lMargin);
-        $this->Cell(0, $this->lMargin, $prenomVisiteur . ' ' . $nomVisiteur, 0, 0, 'R');
-       
-        $this->setY($this->GetY()+10);
         
-        $this->Cell(0,10,'Mois',0,0,'L');
+        $this->SetX(2*$this->lMargin);
+        $this->SetFont('Arial', '', 10); 
+        $this->Cell(0,0,'Visiteur',0,0,'L');
+        $this->SetX($this->lMargin);
+        $this->Cell(0,0,'NRD/A-131',0,0,'C');
+        //$this->SetX($this->lMargin);
+        $this->Cell(0, 0, $prenomVisiteur . ' ' . $nomVisiteur, 0, 0, 'R'); 
+       
+        $this->setY($this->GetY()+15);
+        
+        $this->SetX(2*$this->lMargin);
+        $this->Cell(0, 0,'Mois',0,0,'L');
         $this->SetX($this->lMargin);
         $this->Cell(0, 0, $mois . ' ' . $annee, 0, 0, 'C');
     }
@@ -166,7 +167,7 @@ class PDF extends FPDF {
     $pdf = new PDF();
   
     $pdf->SetTitle('Fiche de frais de XXX');
-    
+
     // Get data from the text files
     $data = $pdf->getDataFrmFile('../../tests/test.txt');
   
