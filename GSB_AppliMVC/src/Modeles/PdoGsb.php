@@ -91,11 +91,11 @@ class PdoGsb
      *
      * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
      */
-    public function getInfosVisiteur($login, $mdp): bool
+    public function getInfosVisiteur($login, $mdp): array|bool
     {
         $requetePrepare = $this->connexion->prepare(
             'SELECT visiteur.id AS id, visiteur.nom AS nom, '
-            . 'visiteur.prenom AS prenom '
+            . 'visiteur.prenom AS prenom, visiteur.email as email '
             . 'FROM visiteur '
             . 'WHERE visiteur.login = :unLogin AND visiteur.mdp = :unMdp'
         );
@@ -479,4 +479,27 @@ class PdoGsb
         $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
+    
+    public function setCodeA2f($id, $code) {
+        $requetePrepare = $this->connexion->prepare(
+                'UPDATE visiteur '
+                . 'SET codea2f = :unCode '
+                . 'WHERE visiteur.id = :unIdVisiteur '
+        );
+        $requetePrepare->bindParam(':unCode', $code, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdVisiteur', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+    
+    public function getCodeVisiteur($id) {
+        $requetePrepare = $this->connexion->prepare(
+                'SELECT visiteur.codea2f AS codea2f '
+                . 'FROM visiteur '
+                . 'WHERE visiteur.id = :unId'
+        );
+        $requetePrepare->bindParam(':unId', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $requetePrepare->fetch()['codea2f'];
+    }
+
 }

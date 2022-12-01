@@ -7,7 +7,7 @@ class PDF extends FPDF {
     
     // Header de la page
     function Header() {
-        $linkLogoGSB = '../../public/images/logo.jpg';
+        $linkLogoGSB = '../../resources/Outils/pdf/logo.jpg';
         // Logo GSB
         $this->Image($linkLogoGSB, ($this->GetPageWidth()/2) - 20, $this->lMargin, 40);
     }
@@ -28,7 +28,7 @@ class PDF extends FPDF {
         $this->Cell(0, 10, "Vu l'agent comptable", 0, 0, 'R');
         
         // Ajout de la signature du comptable
-        $imgSignatureComptable = '../../public/images/signatureComptable.png';
+        $imgSignatureComptable = '../../resources/outils/pdf/signatureComptable.png';
         $this->Image($imgSignatureComptable, 150, 250, 50);
     }
     
@@ -101,9 +101,10 @@ class PDF extends FPDF {
         // Header
         $calculColonneCenter = ($this->GetPageWidth()-2*$this->lMargin);
         $colWidth = array($calculColonneCenter);
-        for($i = 0; $i < count($header); $i++)
-            $this->Cell($colWidth[$i], 7, 
-                        $header[$i], 1, 0, 'C', 1);
+        for ($i = 0; $i < count($header); $i++) {
+            $this->Cell($colWidth[$i], 7,
+                    $header[$i], 1, 0, 'C', 1);
+        }
         $this->Ln();
         
         $this->SetXY($this->lMargin, 50);
