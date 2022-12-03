@@ -16,7 +16,38 @@
  */
 ?>
 
+<div class="row">    
+    <h3>Eléments forfaitisés</h3>
+    <div class="col-md-4">
+        <form method="post" 
+              action="index.php?uc=validerFrais&action=CorrigerFraisForfait" 
+              role="form">
+            <fieldset>       
+                <?php
+                foreach ($lesFraisForfait as $unFrais) {
+                    $idFrais = $unFrais['idfrais'];
+                    $libelle = htmlspecialchars($unFrais['libelle']);
+                    $quantite = $unFrais['quantite']; ?>
+                    <div class="form-group">
+                        <label for="idFrais"><?php echo $libelle ?></label>
+                        <input type="text" id="idFrais" 
+                               name="lesFrais[<?php echo $idFrais ?>]"
+                               size="10" maxlength="5" 
+                               value="<?php echo $quantite ?>" 
+                               class="form-control">
+                    </div>
+                    <?php
+                }
+                ?>
+                <button class="btn btn-success" name="corriger[<?php echo $idFrais ?>]" type="submit">Corriger</button>
+                <button class="btn btn-danger" type="reset">Réinitialiser</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
 <hr>
+
 <form method="post" 
       action="index.php?uc=validerFrais&action=CorrigerElemHorsForfait" 
       role="form">
@@ -98,6 +129,14 @@
         </tr>
       <?php } ?>
     </table>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+        <p>Nombre de justificatifs : </p>
+    </div>
+    <div class="col-md-1">
+        <input type="texte" name="nbJust" size="1" maxlength="15" value="<?php echo $lesInfosFicheFrais['nbJustificatifs']?>">
+    </div>
   </div>
 </form>
 <form method="post" 

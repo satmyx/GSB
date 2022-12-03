@@ -22,6 +22,7 @@ switch ($action) {
     $lesVisiteurs = $pdo->getToutLesVisiteurs();
     $idvst = filter_input(INPUT_POST, "lstVisiteurs", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $_SESSION['idVisi'] = $idvst;
+    $leVisiteur = $idvst;
     $lesMois = $pdo->getLesMoisDisponiblesCL($_SESSION['idVisi']);
     if (empty($lesMois)) {
       ?></br><?php
@@ -44,6 +45,7 @@ switch ($action) {
     break;
   case 'voirEtatFrais':
     $lesVisiteurs = $pdo->getToutLesVisiteurs();
+    $leVisiteur = $_SESSION['idVisi'];
     $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $_SESSION['date'] = $leMois;
     $lesMois = $pdo->getLesMoisDisponiblesCL($_SESSION['idVisi']);
@@ -77,6 +79,31 @@ switch ($action) {
     $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($_SESSION['idVisi'], $_SESSION['date']);
     include PATH_VIEWS . '/comptable/v_etatFraisComptable.php';
     break;
+    case 'CorrigerFraisForfait':
+      $lesVisiteurs = $pdo->getToutLesVisiteurs();
+      $leVisiteur = $_SESSION['idVisi'];
+      $lesMois = $pdo->getLesMoisDisponiblesCL($_SESSION['idVisi']);
+      $moisASelectionne = $_SESSION['date'];
+      include PATH_VIEWS . '/comptable/v_listeVisiteur.php';
+      include PATH_VIEWS . '/comptable/v_listeMoisComptable.php';
+      $selectedValue = $_SESSION['idVisi'];
+      $lesFrais = filter_input(INPUT_POST, 'lesFrais', FILTER_DEFAULT, FILTER_FORCE_ARRAY);
+      if ($pdo->lesQteFraisValides($lesFrais)) {
+        $pdo->majFraisForfait($_SESSION['idVisi'], $_SESSION['date'], $lesFrais);
+        ?>
+        <div class = "alert alert-warning" role = "alert">
+          <p>Votre eléments forfaitisés a bien été corrigée !</p>
+        </div>
+        <?php
+      } else {
+        Utilitaires::ajouterErreur('Les valeurs des frais doivent être numériques');
+        include 'vues/v_erreurs.php';
+      }
+      $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($_SESSION['idVisi'], $_SESSION['date']);
+      $lesFraisForfait = $pdo->getLesFraisForfait($_SESSION['idVisi'], $_SESSION['date']);
+      $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($_SESSION['idVisi'], $_SESSION['date']);
+      include PATH_VIEWS . '/comptable/v_etatFraisComptable.php';
+      break;
     case 'CorrigerElemHorsForfait' :
       $lesMois = $pdo->getLesMoisDisponiblesCL($_SESSION['idVisi']);
       $moisASelectionne = $_SESSION['date'];

@@ -21,12 +21,19 @@
               $id_vst = $unVisiteur['id'];
               $nom_vst = $unVisiteur['nom'];
               $prenom_vst = $unVisiteur['prenom'];
-              ?> 
+            if ($id_vst == $leVisiteur) {
+            ?>
+              <option selected value="<?php echo $id_vst ?>">
+                <?php echo $nom_vst . ' ' . $prenom_vst ?> </option>
+            <?php
+            } else {
+            ?>
               <option value="<?php echo $id_vst ?>">
               <?php echo $nom_vst . ' ' . $prenom_vst ?> </option> 
-              <?php
+          <?php
             }
-          ?>   
+          }
+          ?>
         </select>     
       </div>
     </form> 

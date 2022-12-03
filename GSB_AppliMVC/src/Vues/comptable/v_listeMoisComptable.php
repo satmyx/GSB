@@ -5,7 +5,6 @@
  * and open the template in the editor.
  */
 ?>
-<div class="row">
   <div class="col-md-1">
     <h4>mois : </h4>
   </div>

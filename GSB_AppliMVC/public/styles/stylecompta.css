@@ -20,6 +20,20 @@ a:hover{
     text-decoration: none;
 }
 .nav-pills > li.active > a,.nav-pills > li.active > a:hover,.nav-pills > li.active > a:focus {
-    color: #fff;
+    color: white;
     background-color: var(--orange-gsb-comptable);
+}
+
+.panel-info {
+    border-color: var(--orange-gsb-comptable); 
+}
+
+.panel-info > .panel-heading {
+    background-color: var(--orange-gsb-comptable);
+    border-color: var(--orange-gsb-comptable);
+    color: white;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid var(--orange-gsb-comptable);
 }

@@ -75,7 +75,7 @@
             </div>
         <?php
         } else if ($estConnecteComptable) {
-            echo "<link href='./styles/stylecompta.css' rel='stylesheet'>"
+            echo "<link href='/public/styles/stylecompta.css' rel='stylesheet'>"
         ?>
             <div class="header">
                 <div class="row vertical-align">

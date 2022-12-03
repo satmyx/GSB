@@ -359,6 +359,20 @@ class PdoGsb
         return $boolReturn;
     }
 
+    public function lesQteFraisValides($lesFrais) {
+        return Utilitaires::estTableauEntiers($lesFrais);
+    }
+
+    public function refuserFraisHorsForfait(string $idFrais) {
+        $requetePrepare = $this->connexion->prepare(
+          'UPDATE lignefraishorsforfait '
+          . 'SET lignefraishorsforfait.libelle= LEFT(CONCAT("REFUSE"," ",libelle),100) '
+          . 'WHERE lignefraishorsforfait.id = :unIdFrais'
+        );
+        $requetePrepare->bindParam(':unIdFrais', $idFrais, PDO::PARAM_STR);
+        $requetePrepare->execute();
+      }
+
     /**
      * Retourne le dernier mois en cours d'un visiteur
      *
