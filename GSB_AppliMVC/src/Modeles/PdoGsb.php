@@ -371,7 +371,53 @@ class PdoGsb
         );
         $requetePrepare->bindParam(':unIdFrais', $idFrais, PDO::PARAM_STR);
         $requetePrepare->execute();
-      }
+    }
+
+    public function getVisiteurFromMoisVA(string $mois) {
+        $requetePrepare = $this->connexion->prepare(
+          "select CONCAT(nom, ' ', prenom)as nomvisiteur, idvisiteur as visiteur from fichefrais "
+          . "inner join visiteur on visiteur.id = fichefrais.idvisiteur "
+          . "where mois=:unMois "
+          . "AND idetat='VA'");
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $res = $requetePrepare->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
+
+    public function validerFicheDeFraisVA(string $idVisiteur, string $mois, string $montant) {
+        $dateCourante = date('Y-m-d');
+        $idEtat = 'MP';
+        $requetePrepare = $this->connexion->prepare(
+          'UPDATE fichefrais '
+          . 'SET fichefrais.montantvalide = :unMontant, fichefrais.datemodif = :uneDate, fichefrais.idetat = :unIdEtat '
+          . 'WHERE fichefrais.idvisiteur = :unIdVisiteur '
+          . 'AND fichefrais.mois = :unMois '
+        );
+        $requetePrepare->bindParam(':unMontant', $montant, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':uneDate', $dateCourante, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdEtat', $idEtat, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+
+    public function validerFicheDeFrais(string $idVisiteur, string $mois, string $montant) {
+        $dateCourante = date('Y-m-d');
+        $idEtat = 'VA';
+        $requetePrepare = $this->connexion->prepare(
+          'UPDATE fichefrais '
+          . 'SET fichefrais.montantvalide = :unMontant, fichefrais.datemodif = :uneDate, fichefrais.idetat = :unIdEtat '
+          . 'WHERE fichefrais.idvisiteur = :unIdVisiteur '
+          . 'AND fichefrais.mois = :unMois'
+        );
+        $requetePrepare->bindParam(':unMontant', $montant, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':uneDate', $dateCourante, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdEtat', $idEtat, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
 
     /**
      * Retourne le dernier mois en cours d'un visiteur

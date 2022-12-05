@@ -9,6 +9,9 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+.mt-20 {
+  margin-top: 20px;
+}
 body {
   margin: 0;
 }
