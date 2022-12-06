@@ -73,3 +73,5 @@
         ?>
     </table>
 </div>
+
+<button class="btn btn-success" type="submit" href="#">Générer la fiche de frais en PDF</button>

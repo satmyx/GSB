@@ -16,7 +16,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-qrcode"></i>
+                                    <i class="glyphicon glyphicon-tag"></i>
                                 </span>
                                 <input class="form-control" placeholder="Code"
                                        name="code" type="text" maxlength="4">
