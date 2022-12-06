@@ -155,10 +155,10 @@ function Table($link, $query, $prop=array())
 
 
 // Informations du patient
-function getInfosVisiteur($link) {
+function getInfosVisiteur() {
         
         
-        $prenomVisiteur = mysqli_query($link, 'select visiteur.prenom from visiteur where prenom = "Louis"');
+        $prenomVisiteur = 'select';
         $nomVisiteur = 'VILLECHALANE';
         $mois = 'Juillet';
         $annee = '2022';
@@ -235,7 +235,7 @@ $pdf->Text(($pdf->GetPageWidth() / 2) - $pdf->GetStringWidth($text) / 2, $pdf->G
 
 $pdf->Ln(20);
 
-$pdf->Table($link,'select mois as "Date", libelle as "Libellé", montant from lignefraishorsforfait');
+$pdf->Table($link,utf8_decode('select mois as "Date", libelle as "Libellé;", montant from lignefraishorsforfait'));
 
 $pdf->Ln(15);
 
