@@ -198,6 +198,19 @@ function creationFraisForfait($pdo)
     }
 }
 
+function updateMdpVisiteurhash($pdo)
+{
+    $req = 'select * from visiteur';
+    $res = $pdo->query($req);
+    $lesLignes = $res->fetchAll();
+    foreach ($lesLignes as $unVisiteur) {
+        $hashMdp = password_hash($unVisiteur['mdp'], PASSWORD_DEFAULT);
+        $id = $unVisiteur['id'];
+        $req = "update visiteur set mdp ='$hashMdp' where visiteur.id ='$id' ";
+        $pdo->exec($req);
+    }
+}
+
 /**
  * Fonction qui retourne des exmples de frais hors forfait pour de la génération
  * aléatoire
