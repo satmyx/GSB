@@ -94,7 +94,7 @@ class PdoGsb
     {
         $requetePrepare = $this->connexion->prepare(
             'SELECT visiteur.id AS id, visiteur.nom AS nom, '
-            . 'visiteur.prenom AS prenom '
+            . 'visiteur.prenom AS prenom, visiteur.email as email '
             . 'FROM visiteur '
             . 'WHERE visiteur.login = :unLogin'
         );
@@ -103,7 +103,7 @@ class PdoGsb
         return $requetePrepare->fetch();
     }
     
-    public function getMdpVisiteur($login) {
+    public function getMdpVisiteur($login): array|bool {
         $requetePrepare = $this->connexion->prepare(
             'SELECT mdp '
             . 'FROM visiteur '
@@ -114,7 +114,7 @@ class PdoGsb
         return $requetePrepare->fetch(PDO::FETCH_OBJ)->mdp;
     }
     
-    public function getMdpComptable($login) {
+    public function getMdpComptable($login): array|bool {
         $requetePrepare = $this->connexion->prepare(
             'SELECT mdp '
             . 'FROM comptable '
@@ -155,13 +155,57 @@ class PdoGsb
     {
         $requetePrepare = $this->connexion->prepare(
             'SELECT comptable.id AS id, comptable.nom AS nom, '
-            . 'comptable.prenom AS prenom '
+            . 'comptable.prenom AS prenom, comptable.email as email '
             . 'FROM comptable '
             . 'WHERE comptable.login = :unLogin'
         );
         $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
         $requetePrepare->execute();
         return $requetePrepare->fetch();
+    }
+    
+    public function setCodeA2F($id, $code) {
+        $requetePrepare = $this->connexion->prepare(
+        'UPDATE visiteur '
+        . 'SET codea2f = :unCode '
+        . 'WHERE visiteur.id = :unIdVisiteur '
+        );
+        $requetePrepare->bindParam(':unCode', $code, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdVisiteur', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+    
+    public function setCodeA2FCompta($id, $code) {
+        $requetePrepare = $this->connexion->prepare(
+        'UPDATE comptable '
+        . 'SET codea2f = :unCode '
+        . 'WHERE comptable.id = :unIdComptable '
+        );
+        $requetePrepare->bindParam(':unCode', $code, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdComptable', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+    }
+    
+    public function getCodeVisiteur($id) {
+        $requetePrepare = $this->connexion->prepare(
+                'SELECT visiteur.codea2f AS codea2f '
+                . 'FROM visiteur '
+                . 'WHERE visiteur.id = :unId'
+                );
+        $requetePrepare->bindParam(':unId', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $requetePrepare->fetch()['codea2f'];
+    }
+    
+    public function getCodeComptable($id) {
+        $requetePrepare = $this->connexion->prepare(
+                'SELECT comptable.codea2f AS codea2f '
+                . 'FROM comptable '
+                . 'WHERE comptable.id = :unId'
+                );
+        $requetePrepare->bindParam(':unId', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $requetePrepare->fetch()['codea2f'];
     }
 
     /**
