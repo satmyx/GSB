@@ -364,17 +364,20 @@ function Header()
 
 function Footer()
 {
-	// Positionnement à 1,5 cm du bas
-        $this->SetXY(-50,-75);
-
-        // Police Arial italique 8
-        $this->SetFont('Arial','I',8);
         
         // Date du jour
         setlocale(LC_TIME, "");
-        date_default_timezone_set('Europe/Paris');
-        $date_du_jour = utf8_encode(strftime('%d %B %Y'));
-        $this->Cell(0,10,utf8_decode('Fait à Paris, le '. $date_du_jour),0,0,'L');
+        
+        $date_du_jour = new DateTime();
+        $timezone= new DateTimeZone('Europe/Paris');
+        $date_du_jour->setTimezone($timezone);
+        $this->Cell(0,10,utf8_decode('Fait à Paris, le '. $date_du_jour),0,0,'R');
+        
+        $this->Cell(0, 10, "Vu l'agent comptable", 0, 0, 'R');
+ 
+        // Ajout de la signature du comptable
+        $imgSignatureComptable = '../../resources/Outils/PDF/signatureComptable.png';
+        $this->Image($imgSignatureComptable, 150, 250, 50);
 
 }
 
