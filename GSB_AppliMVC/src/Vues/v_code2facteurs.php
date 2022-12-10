@@ -15,8 +15,7 @@
                 <h3 class="panel-title">Identification utilisateur - Authentification à deux facteurs (A2F)</h3>
             </div>
             <div class="panel-body">
-                <form role="form" method="post" 
-                      action="index.php?uc=connexion&action=valideA2fConnexion">
+                <form role="form" method="post" <?php if($estComptable) {?> action="index.php?uc=connexion&action=valideA2fConnexionComptable" <?php } else {?> action="index.php?uc=connexion&action=valideA2fConnexion" <?php } ?> >
                     <fieldset>
                         <div class="form-group">
                             <div class="input-group">

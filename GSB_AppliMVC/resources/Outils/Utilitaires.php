@@ -39,9 +39,14 @@ abstract class Utilitaires
         return isset($_SESSION['idComptable']) && isset($_SESSION['codeA2f']);
     }
     
+    /**
+     * Renseigne le code A2F
+     * 
+     * @param Integer $code Code A2F
+     */
     public static function connecterA2f($code)
     {
-    $_SESSION['codeA2f'] = $code;
+        $_SESSION['codeA2f'] = $code;
     }
 
     /**

@@ -4926,6 +4926,11 @@ a.label:focus {
   background-color: #777;
   border-radius: 10px;
 }
+
+.badge-visiteur {
+  background-color: #337AB7;
+}
+
 .badge:empty {
   display: none;
 }

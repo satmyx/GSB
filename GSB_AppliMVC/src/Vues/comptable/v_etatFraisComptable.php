@@ -14,6 +14,9 @@
  * @version   GIT: <0>
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
+
+use Outils\Utilitaires;
+
 ?>
 
 <?php if ($uc === 'validerFrais') { ?>
@@ -57,7 +60,7 @@
                 <?php
                 foreach ($lesFraisHorsForfait as $frais) {
                     $date = $frais['date'];
-                    $datee = implode('-', array_reverse(explode('/', $date))); /* transforme une date fr en une date us -> 29/10/2022 en 2022-10-29 */
+                    $datee = Utilitaires::dateFrancaisVersAnglais($date);
                     $libellehorsFrais = $frais['libelle'];
                     $montant = $frais['montant'];
                     $id = $frais['id'];
@@ -132,7 +135,7 @@
     <div class="row">
         <h3>Eléments forfaitisés</h3>
         <div class="col-md-4">
-            <form method="post" action="index.php?uc=validerFrais&action=CorrigerFraisForfait" role="form">
+            <form method="post" role="form">
                 <fieldset>
                     <?php
                     foreach ($lesFraisForfait as $unFrais) {
@@ -146,8 +149,6 @@
                     <?php
                     }
                     ?>
-                    <button class="btn btn-success" name="corriger[<?php echo $idFrais ?>]" type="submit">Corriger</button>
-                    <button class="btn btn-danger" type="reset">Réinitialiser</button>
                 </fieldset>
             </form>
         </div>
@@ -167,7 +168,7 @@
                 <?php
                 foreach ($lesFraisHorsForfait as $frais) {
                     $date = $frais['date'];
-                    $datee = implode('-', array_reverse(explode('/', $date))); /* transforme une date fr en une date us -> 29/10/2022 en 2022-10-29 */
+                    $datee = Utilitaires::dateFrancaisVersAnglais($date);
                     $libellehorsFrais = $frais['libelle'];
                     $montant = $frais['montant'];
                     $id = $frais['id'];

@@ -22,6 +22,8 @@ $pdo = new PDO('mysql:host=localhost;dbname=gsb_frais', 'userGsb', 'secret');
 $pdo->query('SET CHARACTER SET utf8');
 
 set_time_limit(0);
+updateMdpVisiteurhash($pdo);
+updateMdpComptablehash($pdo);
 creationFichesFrais($pdo);
 creationFraisForfait($pdo);
 creationFraisHorsForfait($pdo);

@@ -43,6 +43,7 @@
                             <img src="./images/logo.jpg" class="img-responsive" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin">
                         </h1>
                     </div>
+                    <h2 class="text-right"><span class="badge badge-visiteur">Connecté en tant que : <?php echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'];?></span></h2>
                     <div class="col-md-8">
                         <ul class="nav nav-pills pull-right" role="tablist">
                             <li <?php if (!$uc || $uc == 'accueil') { ?>class="active" <?php } ?>>
@@ -84,6 +85,7 @@
                             <img src="./images/logo.jpg" class="img-responsive" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin">
                         </h1>
                     </div>
+                    <h2 class="text-right"><span class="badge">Connecté en tant que : <?php echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'];?></span></h2>
                     <div class="col-md-8">
                         <ul class="nav nav-pills pull-right" role="tablist">
                             <li <?php if (!$uc || $uc == 'accueil') { ?>class="active" <?php } ?>>

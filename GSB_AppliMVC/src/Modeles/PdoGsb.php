@@ -103,6 +103,13 @@ class PdoGsb
         return $requetePrepare->fetch();
     }
     
+    /**
+     * Retourne le mot de passe d'un visiteur
+     * 
+     * @param String $login Login du visiteur
+     * 
+     * @return le mot de passe du visiteur sous la forme d'un tableau.
+     */
     public function getMdpVisiteur($login): array|bool {
         $requetePrepare = $this->connexion->prepare(
             'SELECT mdp '
@@ -114,6 +121,13 @@ class PdoGsb
         return $requetePrepare->fetch(PDO::FETCH_OBJ)->mdp;
     }
     
+    /**
+    * Retourne le mot de passe d'un comptable
+    * 
+    * @param String $login Login du comptable
+    * 
+    * @return le mot de passe du comptable sous la forme d'un tableau.
+    */
     public function getMdpComptable($login): array|bool {
         $requetePrepare = $this->connexion->prepare(
             'SELECT mdp '
@@ -164,6 +178,12 @@ class PdoGsb
         return $requetePrepare->fetch();
     }
     
+    /**
+     * Ajoute un codeA2F pour un visiteur
+     * 
+     * @param String $id Id du comptable
+     * @param Integer $code Code A2F aleatoire
+     */
     public function setCodeA2F($id, $code) {
         $requetePrepare = $this->connexion->prepare(
         'UPDATE visiteur '
@@ -175,6 +195,12 @@ class PdoGsb
         $requetePrepare->execute();
     }
     
+    /**
+    * Ajoute un codeA2F pour un comptable
+    * 
+    * @param String $id Id du comptable
+    * @param Integer $code Code A2F aleatoire
+    */
     public function setCodeA2FCompta($id, $code) {
         $requetePrepare = $this->connexion->prepare(
         'UPDATE comptable '
@@ -186,6 +212,11 @@ class PdoGsb
         $requetePrepare->execute();
     }
     
+    /**
+    * Recuperer le code A2F d'un visiteur
+    * 
+    * @param String $id Id du visiteur
+    */
     public function getCodeVisiteur($id) {
         $requetePrepare = $this->connexion->prepare(
                 'SELECT visiteur.codea2f AS codea2f '
@@ -197,6 +228,11 @@ class PdoGsb
         return $requetePrepare->fetch()['codea2f'];
     }
     
+    /**
+    * Recuperer le code A2F d'un comptable
+    * 
+    * @param String $id Id du comptable
+    */
     public function getCodeComptable($id) {
         $requetePrepare = $this->connexion->prepare(
                 'SELECT comptable.codea2f AS codea2f '
@@ -217,7 +253,7 @@ class PdoGsb
      * @param String $idVisiteur ID du visiteur
      * @param String $mois       Mois sous la forme aaaamm
      *
-     * @return tous les champs des lignes de frais hors forfait sous la forme
+     * @return tout les champs des lignes de frais hors forfait sous la forme
      * d'un tableau associatif
      */
     public function getLesFraisHorsForfait($idVisiteur, $mois): array
@@ -337,38 +373,38 @@ class PdoGsb
         }
     }
 
-      /**
-   *  Modifier les elements d'une fiche hors frais 
-   * 
-   * 
-   * @param type $idVisiteur id du visiteur
-   * @param type $mois le mois de la modif
-   * @param Array $lesHorsForfaitLibelle  libelle de la fiche hors frais
-   * @param type $lesHorsForfaitMontant montant de la fiche hors frais
-   * @param type $lesHorsForfaitDate date de la fiche hors frais
-   */
-  public function majFraisHorsForfait($idVisiteur, $mois, $lesHorsForfaitLibelle, $lesHorsForfaitMontant, $lesHorsForfaitDate) {
-    $lesCles = array_keys($lesHorsForfaitLibelle);
-    foreach ($lesCles as $unIdHorsFrais) {
-      $libelle = $lesHorsForfaitLibelle[$unIdHorsFrais];
-      $montant = $lesHorsForfaitMontant[$unIdHorsFrais];
-      $date = $lesHorsForfaitDate[$unIdHorsFrais];
-      $requetePrepare = $this->connexion->prepare(
-        'UPDATE lignefraishorsforfait '
-        . 'SET lignefraishorsforfait.libelle = :unLibelle, lignefraishorsforfait.montant = :unMontant, lignefraishorsforfait.date = :uneDate '
-        . 'WHERE lignefraishorsforfait.idvisiteur = :unIdVisiteur '
-        . 'AND lignefraishorsforfait.mois = :unMois '
-        . 'AND lignefraishorsforfait.id = :unId'
-      );
-      $requetePrepare->bindParam(':unLibelle', $libelle, PDO::PARAM_STR);
-      $requetePrepare->bindParam(':unMontant', $montant, PDO::PARAM_STR);
-      $requetePrepare->bindParam(':uneDate', $date, PDO::PARAM_STR);
-      $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
-      $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
-      $requetePrepare->bindParam(':unId', $unIdHorsFrais, PDO::PARAM_INT);
-      $requetePrepare->execute();
+    /**
+    *  Modifier les elements d'une fiche hors frais 
+    * 
+    * 
+    * @param type $idVisiteur id du visiteur
+    * @param type $mois le mois de la modif
+    * @param Array $lesHorsForfaitLibelle  libelle de la fiche hors frais
+    * @param type $lesHorsForfaitMontant montant de la fiche hors frais
+    * @param type $lesHorsForfaitDate date de la fiche hors frais
+    */
+    public function majFraisHorsForfait($idVisiteur, $mois, $lesHorsForfaitLibelle, $lesHorsForfaitMontant, $lesHorsForfaitDate) {
+        $lesCles = array_keys($lesHorsForfaitLibelle);
+        foreach ($lesCles as $unIdHorsFrais) {
+        $libelle = $lesHorsForfaitLibelle[$unIdHorsFrais];
+        $montant = $lesHorsForfaitMontant[$unIdHorsFrais];
+        $date = $lesHorsForfaitDate[$unIdHorsFrais];
+        $requetePrepare = $this->connexion->prepare(
+            'UPDATE lignefraishorsforfait '
+            . 'SET lignefraishorsforfait.libelle = :unLibelle, lignefraishorsforfait.montant = :unMontant, lignefraishorsforfait.date = :uneDate '
+            . 'WHERE lignefraishorsforfait.idvisiteur = :unIdVisiteur '
+            . 'AND lignefraishorsforfait.mois = :unMois '
+            . 'AND lignefraishorsforfait.id = :unId'
+        );
+        $requetePrepare->bindParam(':unLibelle', $libelle, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMontant', $montant, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':uneDate', $date, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unId', $unIdHorsFrais, PDO::PARAM_INT);
+        $requetePrepare->execute();
+        }
     }
-  }
 
     /**
      * Met à jour le nombre de justificatifs de la table ficheFrais
@@ -436,7 +472,12 @@ class PdoGsb
         $requetePrepare->bindParam(':unIdFrais', $idFrais, PDO::PARAM_STR);
         $requetePrepare->execute();
     }
-
+    /**
+    *  Retourne une liste de tous les visiteurs qui ont une fiche de frais valider
+    * 
+    * @param string $mois
+    * @return type
+    */
     public function getVisiteurFromMoisVA(string $mois) {
         $requetePrepare = $this->connexion->prepare(
           "select CONCAT(nom, ' ', prenom)as nomvisiteur, idvisiteur as visiteur from fichefrais "
@@ -448,7 +489,14 @@ class PdoGsb
         $res = $requetePrepare->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
-
+    /**
+    * Fonction qui change le statut de la fiche de l'idVisiteur 
+    * en mise en paiement
+    * 
+    * @param string $idVisiteur l'id du visiteur
+    * @param string $mois la date de la fiche de frais
+    * @param string $montant le montant de la fiche de frais
+    */
     public function validerFicheDeFraisVA(string $idVisiteur, string $mois, string $montant) {
         $dateCourante = date('Y-m-d');
         $idEtat = 'MP';
@@ -466,6 +514,13 @@ class PdoGsb
         $requetePrepare->execute();
     }
 
+    /**
+     * Fonction qui change le status de la fiche d'un visiteur en Valider apres validation fiche frais
+     * 
+     * @param string $idVisiteur l'id du visiteur
+     * @param string $mois la date de la fiche de frais
+     * @param string $montant le montant de la fiche de frais
+     */
     public function validerFicheDeFrais(string $idVisiteur, string $mois, string $montant) {
         $dateCourante = date('Y-m-d');
         $idEtat = 'VA';

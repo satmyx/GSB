@@ -40,17 +40,19 @@ switch ($action) {
                 $nom = $comptable['nom'];
                 $prenom = $comptable['prenom'];
                 $email = $comptable['email'];
+                $estComptable = true;
                 Utilitaires::connecterComptable($id, $nom, $prenom);
                 $code = rand(1000, 9999);
                 $pdo->setCodeA2FCompta($id, $code);
                 mail($email, '[GSB-AppliFrais] Code de vérification', "Code : $code");
-                include PATH_VIEWS . 'v_code2facteursComptable.php';
+                include PATH_VIEWS . 'v_code2facteurs.php';
             }
         } elseif (!password_verify($mdp, $pdo->getMdpVisiteur($login))) {
             $id = $visiteur['id'];
             $nom = $visiteur['nom'];
             $prenom = $visiteur['prenom'];
             $email = $visiteur['email'];
+            $estComptable = false;
             Utilitaires::connecter($id, $nom, $prenom);
             $code = rand(1000, 9999);
             $pdo->setCodeA2F($id, $code);
