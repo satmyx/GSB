@@ -137,6 +137,28 @@ abstract class Utilitaires
         return $annee . $mois;
     }
 
+    /**
+     * Retourne le mois suivant
+     * 
+     * @param String $mois
+     * 
+     * @return String le mois suivant
+     */
+    public static function getMoisSuivant(string $mois) {
+        $numAnnee = substr($mois, 0, 4);
+        $numMois = substr($mois, 4, 2);
+        if ($numMois == '12') {
+          $numMois = '01';
+          $numAnnee++;
+        } else {
+          $numMois++;
+        }
+        if (strlen($numMois) == 1) {
+          $numMois = '0' . $numMois;
+        }
+        return $numAnnee . $numMois;
+    }
+
     /* gestion des erreurs */
 
     /**

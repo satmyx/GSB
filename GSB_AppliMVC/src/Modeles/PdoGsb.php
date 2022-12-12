@@ -312,10 +312,16 @@ class PdoGsb
         $requetePrepare = $this->connexion->prepare(
             'SELECT fraisforfait.id as idfrais, '
             . 'fraisforfait.libelle as libelle, '
-            . 'lignefraisforfait.quantite as quantite '
+            . 'lignefraisforfait.quantite as quantite, '
+            . 'fraisforfait.montant as prix, '
+            . 'fraiskm.prix as fraiskm '
             . 'FROM lignefraisforfait '
             . 'INNER JOIN fraisforfait '
             . 'ON fraisforfait.id = lignefraisforfait.idfraisforfait '
+            . 'INNER JOIN visiteur '
+            . 'ON visiteur.id = lignefraisforfait.idvisiteur '
+            . 'INNER JOIN fraiskm '
+            . 'ON visiteur.idVehicule = fraiskm.id '
             . 'WHERE lignefraisforfait.idvisiteur = :unIdVisiteur '
             . 'AND lignefraisforfait.mois = :unMois '
             . 'ORDER BY lignefraisforfait.idfraisforfait'
@@ -457,6 +463,24 @@ class PdoGsb
             $boolReturn = true;
         }
         return $boolReturn;
+    }
+
+    /**
+    * Permet de reporter un frais hors forfait vers un autre mois
+    * @param String $idFrais    Id du frais
+    * @param String $mois   le mois suivant
+    */
+    public function reporterFraisHorsForfait(string $idFrais, string $mois) {
+        $mois = Utilitaires::getMoisSuivant($mois);
+        $requetePrepare = $this->connexion->prepare(
+        'UPDATE lignefraishorsforfait '
+        . 'SET lignefraishorsforfait.mois= :unMois '
+        . 'WHERE lignefraishorsforfait.id = :unIdFrais'
+        );
+        $requetePrepare->bindParam(':unIdFrais', $idFrais, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        return $mois;
     }
 
     public function lesQteFraisValides($lesFrais) {

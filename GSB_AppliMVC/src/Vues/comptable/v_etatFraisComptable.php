@@ -30,7 +30,15 @@ use Outils\Utilitaires;
                     foreach ($lesFraisForfait as $unFrais) {
                         $idFrais = $unFrais['idfrais'];
                         $libelle = htmlspecialchars($unFrais['libelle']);
-                        $quantite = $unFrais['quantite']; ?>
+                        $quantite = $unFrais['quantite'];
+                        $fraiskm = $unFrais['fraiskm'];
+                        if ($idFrais !== 'KM') {
+                            $montant = $quantite * $unFrais['prix'];
+                        } else {
+                            $montant = $quantite * $fraiskm;
+                        }
+                        $montants += $montant;
+                        ?>
                         <div class="form-group">
                             <label for="idFrais"><?php echo $libelle ?></label>
                             <input type="text" id="idFrais" name="lesFrais[<?php echo $idFrais ?>]" size="10" maxlength="5" value="<?php echo $quantite ?>" class="form-control">
@@ -62,10 +70,12 @@ use Outils\Utilitaires;
                     $date = $frais['date'];
                     $datee = Utilitaires::dateFrancaisVersAnglais($date);
                     $libellehorsFrais = $frais['libelle'];
+                    $refus = 0;
                     $montant = $frais['montant'];
                     $id = $frais['id'];
                     $pos = strpos($libellehorsFrais, 'REFUSE');
                     if ($pos !== FALSE) {
+                        $montants += $refus;
                 ?>
                         <tr>
                             <td>
@@ -87,7 +97,10 @@ use Outils\Utilitaires;
                                 </div>
                             </td>
                             <td> Pas d'actions possibles après refus</td>
-                        <?php } else { ?>
+                        <?php } else { 
+                            $montant = $frais['montant'];
+                            $montants += $montant;
+                            ?>
                         <tr>
                             <td>
                                 <div class="form-group">

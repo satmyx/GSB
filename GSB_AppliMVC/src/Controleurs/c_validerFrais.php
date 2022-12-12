@@ -142,7 +142,7 @@ switch ($action) {
     $idVisiteur = filter_input(INPUT_GET, 'idVisiteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $mois = $_SESSION['date'];
     ?></br>
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-warning" role="alert">
       <p><h4>Voulez vous modifier ou supprimer le frais?<br></h4>
       <a href="index.php?uc=validerFrais&action=supprimer&idFrais=<?php echo $unIdFrais ?>&id=<?php echo $idVisiteur ?>&montant=<?php echo $leMontant ?>&mois=<?php echo $mois ?>">Supprimer</a> 
       ou <a href="index.php?uc=validerFrais&action=reporter&idFrais=<?php echo $unIdFrais ?>&mois=<?php echo $ceMois ?>&id=<?php echo $idVisiteur ?>&montant=<?php echo $leMontant ?>&mois=<?php echo $mois ?>">Reporter</a></p>
@@ -156,7 +156,7 @@ switch ($action) {
     $idVisiteur = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $pdo->refuserFraisHorsForfait($idFrais);
     ?>
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-warning" role="alert">
       <p>Ce frais hors forfait a bien été supprimé! <a href = "index.php?uc=validerFrais&action=selectionnerVisiteur">Cliquez ici</a>
         pour revenir à la selection.</p>
     </div>
@@ -166,7 +166,7 @@ switch ($action) {
   case 'reporter':
     $idFrais = filter_input(INPUT_GET, 'idFrais', FILTER_SANITIZE_NUMBER_INT);
     $mois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $moisSuivant = $pdo->getMoisSuivant($mois);
+    $moisSuivant = Utilitaires::getMoisSuivant($mois);
     $idVisiteur = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $leMontant = filter_input(INPUT_GET, 'montant', FILTER_SANITIZE_NUMBER_INT);
     $mois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -175,7 +175,7 @@ switch ($action) {
     }
     $moisAReporter = $pdo->reporterFraisHorsForfait($idFrais, $mois);
     ?>
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-warning" role="alert">
       <p>Ce frais hors forfait a bien été reporté au mois suivant! <a href = "index.php?uc=validerFrais&action=selectionnerVisiteur">Cliquez ici</a>
         pour revenir à la selection.</p>
     </div>
