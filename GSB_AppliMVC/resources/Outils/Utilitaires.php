@@ -26,7 +26,27 @@ abstract class Utilitaires
      */
     public static function estConnecte(): bool
     {
-        return isset($_SESSION['idVisiteur']);
+        return isset($_SESSION['idVisiteur']) && isset($_SESSION['codeA2f']);
+    }
+
+    /**
+     * Teste si un quelconque comptable est connecté
+     *
+     * @return vrai ou faux
+     */
+    public static function estConnecteComptable(): bool
+    {
+        return isset($_SESSION['idComptable']) && isset($_SESSION['codeA2f']);
+    }
+    
+    /**
+     * Renseigne le code A2F
+     * 
+     * @param Integer $code Code A2F
+     */
+    public static function connecterA2f($code)
+    {
+        $_SESSION['codeA2f'] = $code;
     }
 
     /**
@@ -41,6 +61,22 @@ abstract class Utilitaires
     public static function connecter($idVisiteur, $nom, $prenom): void
     {
         $_SESSION['idVisiteur'] = $idVisiteur;
+        $_SESSION['nom'] = $nom;
+        $_SESSION['prenom'] = $prenom;
+    }
+
+    /**
+     * Enregistre dans une variable session les infos d'un comptable
+     *
+     * @param String $idComptable ID du comptable
+     * @param String $nom        Nom du comptable
+     * @param String $prenom     Prénom du comptable
+     *
+     * @return null
+     */
+    public static function connecterComptable($idComptable, $nom, $prenom): void
+    {
+        $_SESSION['idComptable'] = $idComptable;
         $_SESSION['nom'] = $nom;
         $_SESSION['prenom'] = $prenom;
     }
@@ -99,6 +135,28 @@ abstract class Utilitaires
             $mois = '0' . $mois;
         }
         return $annee . $mois;
+    }
+
+    /**
+     * Retourne le mois suivant
+     * 
+     * @param String $mois
+     * 
+     * @return String le mois suivant
+     */
+    public static function getMoisSuivant(string $mois) {
+        $numAnnee = substr($mois, 0, 4);
+        $numMois = substr($mois, 4, 2);
+        if ($numMois == '12') {
+          $numMois = '01';
+          $numAnnee++;
+        } else {
+          $numMois++;
+        }
+        if (strlen($numMois) == 1) {
+          $numMois = '0' . $numMois;
+        }
+        return $numAnnee . $numMois;
     }
 
     /* gestion des erreurs */

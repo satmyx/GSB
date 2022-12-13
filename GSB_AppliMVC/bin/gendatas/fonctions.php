@@ -199,6 +199,48 @@ function creationFraisForfait($pdo)
 }
 
 /**
+ * Fonction qui met à jour les mots de passe des visisteurs avec des mots de
+ * pass hash
+ *
+ * @param PDO $pdo instance de la classe PDO utilisée pour se connecter
+ *
+ * @return null
+ */
+function updateMdpVisiteurhash($pdo)
+{
+    $req = 'select * from visiteur';
+    $res = $pdo->query($req);
+    $lesLignes = $res->fetchAll();
+    foreach ($lesLignes as $unVisiteur) {
+        $hashMdp = password_hash($unVisiteur['mdp'], PASSWORD_DEFAULT);
+        $id = $unVisiteur['id'];
+        $req = "update visiteur set mdp ='$hashMdp' where visiteur.id ='$id' ";
+        $pdo->exec($req);
+    }
+}
+
+/**
+ * Fonction qui met à jour les mots de passe des comptables avec des mots de
+ * pass hash
+ *
+ * @param PDO $pdo instance de la classe PDO utilisée pour se connecter
+ *
+ * @return null
+ */
+function updateMdpComptablehash($pdo)
+{
+    $req = 'select * from comptable';
+    $res = $pdo->query($req);
+    $lesLignes = $res->fetchAll();
+    foreach ($lesLignes as $unComptable) {
+        $hashMdp = password_hash($unComptable['mdp'], PASSWORD_DEFAULT);
+        $id = $unComptable['id'];
+        $req = "update comptable set mdp ='$hashMdp' where comptable.id ='$id' ";
+        $pdo->exec($req);
+    }
+}
+
+/**
  * Fonction qui retourne des exmples de frais hors forfait pour de la génération
  * aléatoire
  *

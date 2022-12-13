@@ -32,6 +32,7 @@ switch ($action) {
     case 'voirEtatFrais':
         $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+        $_SESSION['date'] = $leMois;
         $moisASelectionner = $leMois;
         include PATH_VIEWS . 'v_listeMois.php';
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
@@ -44,4 +45,9 @@ switch ($action) {
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
         $dateModif = Utilitaires::dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
         include PATH_VIEWS . 'v_etatFrais.php';
+        break;
+    case 'voirpdf':
+        //$unId = $_SESSION['idVisiteur'];
+        //$date = $_SESSION['date'];
+        include PATH_OUTILS . 'pdf.php';
 }

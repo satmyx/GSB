@@ -25,12 +25,13 @@ session_start();
 
 $pdo = PdoGsb::getPdoGsb();
 $estConnecte = Utilitaires::estConnecte();
+$estConnecteComptable = Utilitaires::estConnecteComptable();
 
 require PATH_VIEWS . 'v_entete.php';
 
 $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-if ($uc && !$estConnecte) {
+if ($uc && !$estConnecte && !$estConnecteComptable) {
     $uc = 'connexion';
 } elseif (empty($uc)) {
     $uc = 'accueil';
@@ -45,6 +46,12 @@ switch ($uc) {
         break;
     case 'gererFrais':
         include PATH_CTRLS . 'c_gererFrais.php';
+        break;
+    case 'validerFrais':
+        include PATH_CTRLS . 'c_validerFrais.php';
+        break;
+    case 'suivrePaiement':
+        include PATH_CTRLS . 'c_suivrePaiement.php';
         break;
     case 'etatFrais':
         include PATH_CTRLS . 'c_etatFrais.php';

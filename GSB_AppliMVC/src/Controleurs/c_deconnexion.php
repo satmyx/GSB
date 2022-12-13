@@ -24,7 +24,7 @@ if (!$uc) {
 
 switch ($action) {
     case 'demandeDeconnexion':
-        if (Utilitaires::estConnecte()) {
+        if (Utilitaires::estConnecte() || Utilitaires::estConnecteComptable()) {
             Utilitaires::deconnecter();
             include PATH_VIEWS . 'v_deconnexion.php';
         } else {
