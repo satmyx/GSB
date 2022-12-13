@@ -1,5 +1,10 @@
 <?php
 
+/* 
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
+ */
+
 ?>
 
 <div class="alert alert-info" role="alert">Un email contenant un code à 4 chiffres vous a été envoyé, merci de le saisir ici...</div>
@@ -10,13 +15,12 @@
                 <h3 class="panel-title">Identification utilisateur - Authentification à deux facteurs (A2F)</h3>
             </div>
             <div class="panel-body">
-                <form role="form" method="post" 
-                      action="index.php?uc=connexion&action=valideA2fConnexion">
+                <form role="form" method="post" <?php if($estComptable) {?> action="index.php?uc=connexion&action=valideA2fConnexionComptable" <?php } else {?> action="index.php?uc=connexion&action=valideA2fConnexion" <?php } ?> >
                     <fieldset>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-tag"></i>
+                                    <i class="glyphicon glyphicon-qrcode"></i>
                                 </span>
                                 <input class="form-control" placeholder="Code"
                                        name="code" type="text" maxlength="4">

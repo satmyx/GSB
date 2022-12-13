@@ -1,0 +1,54 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 11 oct. 2022, 10:27:04
+    Author     : dylan.esculier
+*/
+
+:root{
+    --orange-gsb-comptable: #ff9933;
+}
+
+a {
+    color: var(--orange-gsb-comptable);
+    text-decoration: none;
+}
+a:hover{
+    color: var(--orange-gsb-comptable);
+    text-decoration: none;
+}
+.nav-pills > li.active > a,.nav-pills > li.active > a:hover,.nav-pills > li.active > a:focus {
+    color: white;
+    background-color: var(--orange-gsb-comptable);
+}
+
+.panel-info {
+    border-color: var(--orange-gsb-comptable); 
+}
+
+.panel-info > .panel-heading {
+    background-color: var(--orange-gsb-comptable);
+    border-color: var(--orange-gsb-comptable);
+    color: white;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid var(--orange-gsb-comptable);
+}
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #FF9933;
+    border-radius: 10px;
+}

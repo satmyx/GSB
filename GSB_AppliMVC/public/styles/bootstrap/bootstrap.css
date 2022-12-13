@@ -9,6 +9,9 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+.mt-20 {
+  margin-top: 20px;
+}
 body {
   margin: 0;
 }
@@ -4923,6 +4926,11 @@ a.label:focus {
   background-color: #777;
   border-radius: 10px;
 }
+
+.badge-visiteur {
+  background-color: #337AB7;
+}
+
 .badge:empty {
   display: none;
 }
