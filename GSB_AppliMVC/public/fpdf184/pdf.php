@@ -38,6 +38,7 @@ class PDF extends tFPDF {
 
 // Instanciation de la classe dérivée
 $pdf = new PDF();
+$formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::NONE);
 $pdf->AddPage();
 $pdf->SetFont('Times', '', 12);
 
@@ -46,7 +47,9 @@ $pdf->SetY(55);
 $pdf->SetX(50);
 $pdf->SetTextColor(30, 73, 125); // Couleur texte
 $pdf->SetDrawColor(30, 73, 125); // Couleur des lignes
-$pdf->Cell(110, 10, 'REMBOURSEMENT DE FRAIS ENGAGÉS', 1, 0, 'C');
+$pdf->SetFont('Arial', 'B'); // Texte en gras
+$pdf->Cell(110, 10, utf8_decode('REMBOURSEMENT DE FRAIS ENGAGÉS'), 1, 0, 'C');
+$pdf->SetFont('Arial', ''); // Réinitilisation de l'épaisseur du texte
 
 $unId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $unMois = filter_input(INPUT_GET, 'mois', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -57,10 +60,13 @@ $row = mysqli_fetch_array($rep);
 
 $pdf->SetTitle("Fiche de frais de" . ' ' . $row['nomvisiteur']);
 
-// Infos de la commande calées à gauche
-$pdf->Text(15, 78, 'Visiteur : ');
-$pdf->Text(80, 78, $row['id']);
-$pdf->Text(135, 78, $row['nomvisiteur']);
+// Infos de la commande
+$pdf->SetY($pdf->GetY()+15);
+$pdf->Text(15, 78, 'Visiteur');
+// ID du visiteur
+$pdf->Cell(0,10,$row['id'],0,0,'C');
+// Nom et prénom du visiteur
+$pdf->Cell(0, 10, $row['nomvisiteur'], 0, 0, 'R');
 $mois = substr($row['mois'], -2);
 $annee = substr($row['mois'], 0, 4);
 date_default_timezone_set('Europe/Paris');
@@ -69,7 +75,9 @@ $dateObj = DateTime::createFromFormat('!m', $mois);
 // Nom du mois dans la var
 $nomMois = $dateObj->format('F');
 
-$pdf->Text(15, 88, 'Mois : ' . $nomMois . ' ' . $annee);
+$pdf->SetY($pdf->GetY()+10);
+$pdf->Text(15, 88, 'Mois');
+$pdf->Cell(0,10, $nomMois . ' ' . $annee,0,0,'C');;
 
 $position_entete = 58;
 
@@ -81,13 +89,15 @@ function entete_table($position_entete) {
     $pdf->SetY($position_entete);
     $pdf->SetY(95);
     $pdf->SetX(15);
+    $pdf->SetFont('Arial', 'B'); // Texte en gras
     $pdf->Cell(45, 10, 'Frais forfaitaires', 1, 0, 'L', 1);
     $pdf->SetX(60); // 8 + 96
-    $pdf->Cell(45, 10, 'Quantité', 1, 0, 'C', 1);
+    $pdf->Cell(45, 10, utf8_decode('Quantité'), 1, 0, 'C', 1);
     $pdf->SetX(105); // 104 + 10
     $pdf->Cell(45, 10, 'Montant unitaire', 1, 0, 'C', 1);
     $pdf->SetX(150); // 104 + 10
     $pdf->Cell(45, 10, 'Total', 1, 0, 'C', 1);
+    $pdf->SetFont('Arial', ''); // Réinitilisation de l'épaisseur du texte
     $pdf->Ln(); // Retour à la ligne
 }
 
@@ -102,22 +112,25 @@ $total = 0;
 while ($row2 = mysqli_fetch_array($rep2)) {
     $pdf->SetY($position_detail);
     $pdf->SetX(15);
-    $pdf->MultiCell(45, 10, $row2['libelle'], 1, 'L');
+    $pdf->MultiCell(45, 10, utf8_decode($row2['libelle']), 1, 'L');
     $pdf->SetY($position_detail);
     $pdf->SetX(60);
-    $pdf->MultiCell(45, 10, $row2['quantite'], 1, 'C');
+    $pdf->MultiCell(45, 10, utf8_decode($row2['quantite']), 1, 'C');
     $pdf->SetY($position_detail);
     $pdf->SetX(105);
-    $pdf->MultiCell(45, 10, $row2['montant'], 1, 'C');
+    $pdf->MultiCell(45, 10, utf8_decode($row2['montant']), 1, 'C');
     $pdf->SetY($position_detail);
     $pdf->SetX(150);
-    $pdf->MultiCell(45, 10, $row2['total'], 1, 'C');
+    $pdf->MultiCell(45, 10, utf8_decode($row2['total']), 1, 'C');
     $position_detail += 10;
     $total += $row2['total'];
 }
-$pdf->SetY(153);
-$pdf->SetX(75);
-$pdf->Cell(60, 10, 'AUTRES FRAIS', 1, 0, 'C');
+
+    $pdf->SetY($pdf->GetY()+3);
+    $pdf->SetFont('Arial', 'B'); // Texte en gras
+    $text = 'AUTRES FRAIS';
+    $pdf->Text(($pdf->GetPageWidth() / 2) - $pdf->GetStringWidth($text) / 2, $pdf->GetY() + 11, $text); // Alignement du texte au centre du PDF
+    $pdf->SetFont('Arial', ''); // Réinitilisation de l'épaisseur du texte
 
 function entete_table2() {
     global $pdf;
@@ -126,11 +139,13 @@ function entete_table2() {
     $pdf->SetTextColor(30, 73, 125); // Couleur du texte
     $pdf->SetY(170);
     $pdf->SetX(15);
+    $pdf->SetFont('Arial', 'B'); // Texte en gras
     $pdf->Cell(60, 10, 'Date', 1, 0, 'C', 1);
     $pdf->SetX(75);
-    $pdf->Cell(60, 10, 'Libellé', 1, 0, 'C', 1);
+    $pdf->Cell(60, 10, utf8_decode('Libellé'), 1, 0, 'C', 1);
     $pdf->SetX(135);
     $pdf->Cell(60, 10, 'Montant', 1, 0, 'C', 1);
+    $pdf->SetFont('Arial', ''); // Réinitilisation de l'épaisseur du texte
     $pdf->Ln(); // Retour à la ligne
 }
 
@@ -165,24 +180,20 @@ while ($row3 = mysqli_fetch_array($rep3)) {
 
     $position_detail2 += 10;
 }
-$today = date("d F Y");
-$pdf->SetY($position_detail2+17);
-$pdf->SetX(125);
-$pdf->Cell(40, 10, 'TOTAL ' . $unMois, 1, 0, 'C');
-$pdf->SetX(165);
-$pdf->Cell(30, 10, $total + $montant, 1, 0, 'C');
+
+$pdf->SetY($position_detail2+10);
+$pdf->SetX(115);
+$pdf->Cell(40, 10, 'TOTAL ' . $mois . '/' . $annee, 1, 0, 'C');
+$pdf->SetX(155);
+$pdf->Cell(40, 10, $total + $montant, 1, 0, 'C');
 $pdf->Ln();
-$pdf->SetX(127);
-$pdf->Cell(50, 10, utf8_decode('Fait à Toulon le ') . $today, 0, 0, 'C');
+$pdf->SetXY(114, $pdf->GetY()+ 5);
+$pdf->Cell(0, 10, utf8_decode('Fait à Toulon, le ') . utf8_decode($formatter->format(time())));
 $pdf->Ln();
-$pdf->SetX(122);
-$pdf->Cell(37, 10, utf8_decode('Vu l\'agent comptable '), 0, 0, 'C');
-$pdf->Ln();
-$pdf->SetX(125);
-//$pdf->Image('../images/signatureComptable.jpg');
-// Signature du comptable
-//$imgSignatureComptable = '../../resources/outils/pdf/signatureComptable.png';
-//$this->Image($imgSignatureComptable, 150, 250, 50);
+$pdf->SetXY(114, $pdf->GetY());
+$pdf->Cell(0, 10, 'Vu l\'agent comptable');
+$imgSignatureComptable = '../../resources/images/signatureComptable.png';
+$pdf->Image($imgSignatureComptable, 110, $pdf->GetY()+15, 60);
 
 $pdf->Output();
 ?>
