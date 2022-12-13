@@ -73,4 +73,6 @@
         ?>
     </table>
 </div>
-<a onclick="window.open('fpdf184/pdf.php?id=<?php echo $_SESSION['idVisiteur'] ?>&mois=<?php echo $_SESSION['date'] ?>')" class="btn btn-success">Téléchargement du PDF</a>
+<form action="index.php?uc=etatFrais&action=voirpdf" method="post" >
+    <input id="pdf" type="submit" value="Télécharger le PDF" class="btn btn-success" role="button" >
+</form>

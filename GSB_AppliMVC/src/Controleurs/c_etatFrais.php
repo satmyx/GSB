@@ -45,4 +45,7 @@ switch ($action) {
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
         $dateModif = Utilitaires::dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
         include PATH_VIEWS . 'v_etatFrais.php';
+        break;
+    case 'voirpdf':
+        include PATH_OUTILS . 'pdf.php';
 }
