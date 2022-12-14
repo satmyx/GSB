@@ -122,7 +122,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">48</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
@@ -195,9 +195,30 @@ pour un visiteur et un mois donnés</dd>
 <dd>Teste si un visiteur possède une fiche de frais pour le mois passé en argument</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_getCodeComptable">getCodeComptable()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Recuperer le code A2F d&#039;un comptable</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_getCodeVisiteur">getCodeVisiteur()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Recuperer le code A2F d&#039;un visiteur</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_getInfosComptable">getInfosComptable()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|bool    </span>
+</dt>
+<dd>Retourne les informations d&#039;un comptable</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Modeles-PdoGsb.html#method_getInfosVisiteur">getInfosVisiteur()</a>
     <span>
-                                &nbsp;: <abbr title="\PDOStatement">PDOStatement</abbr>    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|bool    </span>
 </dt>
 <dd>Retourne les informations d&#039;un visiteur</dd>
 
@@ -212,7 +233,7 @@ au forfait concernées par les deux arguments</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Modeles-PdoGsb.html#method_getLesFraisHorsForfait">getLesFraisHorsForfait()</a>
     <span>
-                                &nbsp;: <abbr title="\Modeles\tous">tous</abbr>    </span>
+                                &nbsp;: <abbr title="\Modeles\tout">tout</abbr>    </span>
 </dt>
 <dd>Retourne sous forme d&#039;un tableau associatif toutes les lignes de frais
 hors forfait concernées par les deux arguments.</dd>
@@ -240,6 +261,27 @@ mois donné</dd>
 <dd>Retourne les mois pour lesquel un visiteur a une fiche de frais</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_getLesMoisDisponiblesCL">getLesMoisDisponiblesCL()</a>
+    <span>
+                                &nbsp;: <abbr title="\Modeles\un">un</abbr>    </span>
+</dt>
+<dd>Retourne les mois pour lesquel un visiteur a une fiche de frais CL</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_getMdpComptable">getMdpComptable()</a>
+    <span>
+                                &nbsp;: <abbr title="\Modeles\le">le</abbr>    </span>
+</dt>
+<dd>Retourne le mot de passe d&#039;un comptable</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_getMdpVisiteur">getMdpVisiteur()</a>
+    <span>
+                                &nbsp;: <abbr title="\Modeles\le">le</abbr>    </span>
+</dt>
+<dd>Retourne le mot de passe d&#039;un visiteur</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Modeles-PdoGsb.html#method_getNbjustificatifs">getNbjustificatifs()</a>
     <span>
                                 &nbsp;: <abbr title="\Modeles\le">le</abbr>    </span>
@@ -253,6 +295,27 @@ mois donné</dd>
 </dt>
 <dd>Fonction statique qui crée l&#039;unique instance de la classe
 Appel : $instancePdoGsb = PdoGsb::getPdoGsb();</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_getToutLesVisiteurs">getToutLesVisiteurs()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Retourne la liste des visiteurs</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_getVisiteurFromMoisVA">getVisiteurFromMoisVA()</a>
+    <span>
+                                &nbsp;: <abbr title="\Modeles\type">type</abbr>    </span>
+</dt>
+<dd>Retourne une liste de tous les visiteurs qui ont une fiche de frais valider</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_lesQteFraisValides">lesQteFraisValides()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Modeles-PdoGsb.html#method_majEtatFicheFrais">majEtatFicheFrais()</a>
@@ -271,6 +334,13 @@ Met à jour la table ligneFraisForfait pour un visiteur et
 un mois donné en enregistrant les nouveaux montants</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_majFraisHorsForfait">majFraisHorsForfait()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Modifier les elements d&#039;une fiche hors frais</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Modeles-PdoGsb.html#method_majNbJustificatifs">majNbJustificatifs()</a>
     <span>
                                 &nbsp;: null    </span>
@@ -279,11 +349,54 @@ un mois donné en enregistrant les nouveaux montants</dd>
 pour le mois et le visiteur concerné</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_refuserFraisHorsForfait">refuserFraisHorsForfait()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_reporterFraisHorsForfait">reporterFraisHorsForfait()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Permet de reporter un frais hors forfait vers un autre mois</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_setCodeA2F">setCodeA2F()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Ajoute un codeA2F pour un visiteur</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_setCodeA2FCompta">setCodeA2FCompta()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Ajoute un codeA2F pour un comptable</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Modeles-PdoGsb.html#method_supprimerFraisHorsForfait">supprimerFraisHorsForfait()</a>
     <span>
                                 &nbsp;: null    </span>
 </dt>
 <dd>Supprime le frais hors forfait dont l&#039;id est passé en argument</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_validerFicheDeFrais">validerFicheDeFrais()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Fonction qui change le status de la fiche d&#039;un visiteur en Valider apres validation fiche frais</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Modeles-PdoGsb.html#method_validerFicheDeFraisVA">validerFicheDeFraisVA()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Fonction qui change le statut de la fiche de l&#039;idVisiteur
+en mise en paiement</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Modeles-PdoGsb.html#method___construct">__construct()</a>
@@ -321,7 +434,7 @@ pour toutes les méthodes de la classe</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
@@ -355,7 +468,7 @@ pour toutes les méthodes de la classe</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 
     </aside>
 
@@ -393,7 +506,7 @@ pour toutes les méthodes de la classe</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
@@ -427,7 +540,7 @@ objet donné, ou dans n&#039;importe quel ordre pendant la séquence d&#039;arr�
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">365</span>
+    <span class="phpdocumentor-element-found-in__line">640</span>
 
     </aside>
 
@@ -509,7 +622,7 @@ objet donné, ou dans n&#039;importe quel ordre pendant la séquence d&#039;arr�
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">324</span>
+    <span class="phpdocumentor-element-found-in__line">599</span>
 
     </aside>
 
@@ -568,7 +681,7 @@ les lignes de frais forfait de quantités nulles</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">297</span>
+    <span class="phpdocumentor-element-found-in__line">572</span>
 
     </aside>
 
@@ -615,7 +728,7 @@ les lignes de frais forfait de quantités nulles</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">273</span>
+    <span class="phpdocumentor-element-found-in__line">451</span>
 
     </aside>
 
@@ -664,6 +777,141 @@ les lignes de frais forfait de quantités nulles</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getCodeComptable">
+        getCodeComptable()
+        <a href="classes/Modeles-PdoGsb.html#method_getCodeComptable" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">236</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Recuperer le code A2F d&#039;un comptable</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getCodeComptable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Id du comptable</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getCodeVisiteur">
+        getCodeVisiteur()
+        <a href="classes/Modeles-PdoGsb.html#method_getCodeVisiteur" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">220</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Recuperer le code A2F d&#039;un visiteur</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getCodeVisiteur</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Id du visiteur</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getInfosComptable">
+        getInfosComptable()
+        <a href="classes/Modeles-PdoGsb.html#method_getInfosComptable" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">168</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retourne les informations d&#039;un comptable</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getInfosComptable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$login</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|bool</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$login</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Login du comptable</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|bool</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getInfosVisiteur">
         getInfosVisiteur()
         <a href="classes/Modeles-PdoGsb.html#method_getInfosVisiteur" class="headerlink"><i class="fas fa-link"></i></a>
@@ -671,7 +919,7 @@ les lignes de frais forfait de quantités nulles</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">93</span>
 
     </aside>
 
@@ -679,7 +927,7 @@ les lignes de frais forfait de quantités nulles</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getInfosVisiteur</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$login</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mdp</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\PDOStatement">PDOStatement</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">getInfosVisiteur</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$login</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|bool</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -693,21 +941,12 @@ les lignes de frais forfait de quantités nulles</p>
 </section>
 
             </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$mdp</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Mot de passe du visiteur</p>
-</section>
-
-            </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\PDOStatement">PDOStatement</abbr></span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|bool</span>
             &mdash;
         
     
@@ -725,7 +964,7 @@ les lignes de frais forfait de quantités nulles</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">171</span>
+    <span class="phpdocumentor-element-found-in__line">310</span>
 
     </aside>
 
@@ -780,7 +1019,7 @@ au forfait concernées par les deux arguments</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">120</span>
+    <span class="phpdocumentor-element-found-in__line">259</span>
 
     </aside>
 
@@ -789,7 +1028,7 @@ hors forfait concernées par les deux arguments.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getLesFraisHorsForfait</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idVisiteur</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mois</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\tous">tous</abbr></span></code>
+                    <span class="phpdocumentor-signature__name">getLesFraisHorsForfait</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idVisiteur</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mois</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\tout">tout</abbr></span></code>
 
         <section class="phpdocumentor-description"><p>La boucle foreach ne peut être utilisée ici car on procède
 à une modification de la structure itérée - transformation du champ date-</p>
@@ -820,7 +1059,7 @@ hors forfait concernées par les deux arguments.</p>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\tous">tous</abbr></span>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\tout">tout</abbr></span>
             &mdash;
             <section class="phpdocumentor-description"><p>les champs des lignes de frais hors forfait sous la forme
 d'un tableau associatif</p>
@@ -841,7 +1080,7 @@ d'un tableau associatif</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">195</span>
+    <span class="phpdocumentor-element-found-in__line">340</span>
 
     </aside>
 
@@ -876,7 +1115,7 @@ d'un tableau associatif</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">439</span>
+    <span class="phpdocumentor-element-found-in__line">747</span>
 
     </aside>
 
@@ -934,7 +1173,7 @@ et la ligne d'état</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">406</span>
+    <span class="phpdocumentor-element-found-in__line">681</span>
 
     </aside>
 
@@ -975,6 +1214,148 @@ l'année et le mois correspondant</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getLesMoisDisponiblesCL">
+        getLesMoisDisponiblesCL()
+        <a href="classes/Modeles-PdoGsb.html#method_getLesMoisDisponiblesCL" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">712</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retourne les mois pour lesquel un visiteur a une fiche de frais CL</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getLesMoisDisponiblesCL</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idVisiteur</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\un">un</abbr></span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$idVisiteur</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>ID du visiteur</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\un">un</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>tableau associatif de clé un mois -aaaamm- et de valeurs
+l'année et le mois correspondant</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getMdpComptable">
+        getMdpComptable()
+        <a href="classes/Modeles-PdoGsb.html#method_getMdpComptable" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">131</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retourne le mot de passe d&#039;un comptable</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getMdpComptable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$login</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\le">le</abbr></span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$login</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Login du comptable</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\le">le</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>mot de passe du comptable sous la forme d'un tableau.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getMdpVisiteur">
+        getMdpVisiteur()
+        <a href="classes/Modeles-PdoGsb.html#method_getMdpVisiteur" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">113</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retourne le mot de passe d&#039;un visiteur</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getMdpVisiteur</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$login</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\le">le</abbr></span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$login</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Login du visiteur</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\le">le</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>mot de passe du visiteur sous la forme d'un tableau.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getNbjustificatifs">
         getNbjustificatifs()
         <a href="classes/Modeles-PdoGsb.html#method_getNbjustificatifs" class="headerlink"><i class="fas fa-link"></i></a>
@@ -982,7 +1363,7 @@ l'année et le mois correspondant</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">147</span>
+    <span class="phpdocumentor-element-found-in__line">286</span>
 
     </aside>
 
@@ -1038,7 +1419,7 @@ l'année et le mois correspondant</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
@@ -1065,6 +1446,126 @@ Appel : $instancePdoGsb = PdoGsb::getPdoGsb();</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getToutLesVisiteurs">
+        getToutLesVisiteurs()
+        <a href="classes/Modeles-PdoGsb.html#method_getToutLesVisiteurs" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">147</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retourne la liste des visiteurs</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getToutLesVisiteurs</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getVisiteurFromMoisVA">
+        getVisiteurFromMoisVA()
+        <a href="classes/Modeles-PdoGsb.html#method_getVisiteurFromMoisVA" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">505</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retourne une liste de tous les visiteurs qui ont une fiche de frais valider</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getVisiteurFromMoisVA</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mois</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\type">type</abbr></span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$mois</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Modeles\type">type</abbr></span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_lesQteFraisValides">
+        lesQteFraisValides()
+        <a href="classes/Modeles-PdoGsb.html#method_lesQteFraisValides" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">486</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">lesQteFraisValides</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lesFrais</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$lesFrais</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_majEtatFicheFrais">
         majEtatFicheFrais()
         <a href="classes/Modeles-PdoGsb.html#method_majEtatFicheFrais" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1072,7 +1573,7 @@ Appel : $instancePdoGsb = PdoGsb::getPdoGsb();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">469</span>
+    <span class="phpdocumentor-element-found-in__line">777</span>
 
     </aside>
 
@@ -1137,7 +1638,7 @@ Appel : $instancePdoGsb = PdoGsb::getPdoGsb();</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">217</span>
+    <span class="phpdocumentor-element-found-in__line">362</span>
 
     </aside>
 
@@ -1196,6 +1697,87 @@ de valeur la quantité pour ce frais</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_majFraisHorsForfait">
+        majFraisHorsForfait()
+        <a href="classes/Modeles-PdoGsb.html#method_majFraisHorsForfait" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">392</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Modifier les elements d&#039;une fiche hors frais</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">majFraisHorsForfait</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Modeles\type">type</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idVisiteur</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Modeles\type">type</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mois</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lesHorsForfaitLibelle</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Modeles\type">type</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lesHorsForfaitMontant</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Modeles\type">type</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lesHorsForfaitDate</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$idVisiteur</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Modeles\type">type</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>id du visiteur</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$mois</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Modeles\type">type</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>le mois de la modif</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$lesHorsForfaitLibelle</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>libelle de la fiche hors frais</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$lesHorsForfaitMontant</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Modeles\type">type</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>montant de la fiche hors frais</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$lesHorsForfaitDate</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Modeles\type">type</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>date de la fiche hors frais</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_majNbJustificatifs">
         majNbJustificatifs()
         <a href="classes/Modeles-PdoGsb.html#method_majNbJustificatifs" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1203,7 +1785,7 @@ de valeur la quantité pour ce frais</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">247</span>
+    <span class="phpdocumentor-element-found-in__line">425</span>
 
     </aside>
 
@@ -1260,6 +1842,212 @@ pour le mois et le visiteur concerné</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_refuserFraisHorsForfait">
+        refuserFraisHorsForfait()
+        <a href="classes/Modeles-PdoGsb.html#method_refuserFraisHorsForfait" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">490</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">refuserFraisHorsForfait</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idFrais</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$idFrais</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_reporterFraisHorsForfait">
+        reporterFraisHorsForfait()
+        <a href="classes/Modeles-PdoGsb.html#method_reporterFraisHorsForfait" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">473</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Permet de reporter un frais hors forfait vers un autre mois</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">reporterFraisHorsForfait</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idFrais</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mois</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$idFrais</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Id du frais</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$mois</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>le mois suivant</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setCodeA2F">
+        setCodeA2F()
+        <a href="classes/Modeles-PdoGsb.html#method_setCodeA2F" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">187</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ajoute un codeA2F pour un visiteur</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setCodeA2F</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$code</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Id du comptable</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$code</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Code A2F aleatoire</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setCodeA2FCompta">
+        setCodeA2FCompta()
+        <a href="classes/Modeles-PdoGsb.html#method_setCodeA2FCompta" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">204</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Ajoute un codeA2F pour un comptable</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setCodeA2FCompta</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$code</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Id du comptable</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$code</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Code A2F aleatoire</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_supprimerFraisHorsForfait">
         supprimerFraisHorsForfait()
         <a href="classes/Modeles-PdoGsb.html#method_supprimerFraisHorsForfait" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1267,7 +2055,7 @@ pour le mois et le visiteur concerné</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">388</span>
+    <span class="phpdocumentor-element-found-in__line">663</span>
 
     </aside>
 
@@ -1302,6 +2090,133 @@ pour le mois et le visiteur concerné</p>
                     <article
         class="phpdocumentor-element
             -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_validerFicheDeFrais">
+        validerFicheDeFrais()
+        <a href="classes/Modeles-PdoGsb.html#method_validerFicheDeFrais" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">548</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Fonction qui change le status de la fiche d&#039;un visiteur en Valider apres validation fiche frais</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">validerFicheDeFrais</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idVisiteur</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mois</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$montant</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$idVisiteur</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>l'id du visiteur</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$mois</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>la date de la fiche de frais</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$montant</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>le montant de la fiche de frais</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_validerFicheDeFraisVA">
+        validerFicheDeFraisVA()
+        <a href="classes/Modeles-PdoGsb.html#method_validerFicheDeFraisVA" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">524</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Fonction qui change le statut de la fiche de l&#039;idVisiteur
+en mise en paiement</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">validerFicheDeFraisVA</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idVisiteur</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mois</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$montant</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$idVisiteur</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>l'id du visiteur</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$mois</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>la date de la fiche de frais</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$montant</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>le montant de la fiche de frais</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -private
                                                         "
 >
@@ -1312,7 +2227,7 @@ pour le mois et le visiteur concerné</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Modeles/PdoGsb.php"><a href="files/src-modeles-pdogsb.html"><abbr title="src/Modeles/PdoGsb.php">PdoGsb.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 
     </aside>
 

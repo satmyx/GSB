@@ -157,6 +157,20 @@
 <dd>Enregistre dans une variable session les infos d&#039;un visiteur</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Outils-Utilitaires.html#method_connecterA2f">connecterA2f()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>Renseigne le code A2F</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Outils-Utilitaires.html#method_connecterComptable">connecterComptable()</a>
+    <span>
+                                &nbsp;: null    </span>
+</dt>
+<dd>Enregistre dans une variable session les infos d&#039;un comptable</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Outils-Utilitaires.html#method_dateAnglaisVersFrancais">dateAnglaisVersFrancais()</a>
     <span>
                                 &nbsp;: <abbr title="\Outils\Date">Date</abbr>    </span>
@@ -185,6 +199,13 @@ aaaa-mm-jj</dd>
                                 &nbsp;: <abbr title="\Outils\vrai">vrai</abbr>    </span>
 </dt>
 <dd>Teste si un quelconque visiteur est connecté</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Outils-Utilitaires.html#method_estConnecteComptable">estConnecteComptable()</a>
+    <span>
+                                &nbsp;: <abbr title="\Outils\vrai">vrai</abbr>    </span>
+</dt>
+<dd>Teste si un quelconque comptable est connecté</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Outils-Utilitaires.html#method_estDateDepassee">estDateDepassee()</a>
@@ -220,6 +241,13 @@ aaaa-mm-jj</dd>
                                 &nbsp;: string    </span>
 </dt>
 <dd>Retourne le mois au format aaaamm selon le jour dans le mois</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Outils-Utilitaires.html#method_getMoisSuivant">getMoisSuivant()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Retourne le mois suivant</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Outils-Utilitaires.html#method_lesQteFraisValides">lesQteFraisValides()</a>
@@ -269,7 +297,7 @@ et le montant</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">232</span>
+    <span class="phpdocumentor-element-found-in__line">290</span>
 
     </aside>
 
@@ -314,7 +342,7 @@ et le montant</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -370,6 +398,114 @@ et le montant</dd>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_connecterA2f">
+        connecterA2f()
+        <a href="classes/Outils-Utilitaires.html#method_connecterA2f" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">47</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Renseigne le code A2F</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">connecterA2f</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$code</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$code</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Code A2F</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_connecterComptable">
+        connecterComptable()
+        <a href="classes/Outils-Utilitaires.html#method_connecterComptable" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">77</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Enregistre dans une variable session les infos d&#039;un comptable</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">connecterComptable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$idComptable</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$nom</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$prenom</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">null</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$idComptable</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>ID du comptable</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$nom</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Nom du comptable</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$prenom</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Prénom du comptable</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">null</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_dateAnglaisVersFrancais">
         dateAnglaisVersFrancais()
         <a href="classes/Outils-Utilitaires.html#method_dateAnglaisVersFrancais" class="headerlink"><i class="fas fa-link"></i></a>
@@ -377,7 +513,7 @@ et le montant</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">80</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
@@ -425,7 +561,7 @@ français jj/mm/aaaa</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
@@ -473,7 +609,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">53</span>
+    <span class="phpdocumentor-element-found-in__line">89</span>
 
     </aside>
 
@@ -534,6 +670,41 @@ aaaa-mm-jj</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_estConnecteComptable">
+        estConnecteComptable()
+        <a href="classes/Outils-Utilitaires.html#method_estConnecteComptable" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">37</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Teste si un quelconque comptable est connecté</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">estConnecteComptable</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Outils\vrai">vrai</abbr></span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Outils\vrai">vrai</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>ou faux</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_estDateDepassee">
         estDateDepassee()
         <a href="classes/Outils-Utilitaires.html#method_estDateDepassee" class="headerlink"><i class="fas fa-link"></i></a>
@@ -541,7 +712,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">143</span>
+    <span class="phpdocumentor-element-found-in__line">201</span>
 
     </aside>
 
@@ -588,7 +759,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">160</span>
+    <span class="phpdocumentor-element-found-in__line">218</span>
 
     </aside>
 
@@ -635,7 +806,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">113</span>
+    <span class="phpdocumentor-element-found-in__line">171</span>
 
     </aside>
 
@@ -682,7 +853,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">125</span>
+    <span class="phpdocumentor-element-found-in__line">183</span>
 
     </aside>
 
@@ -729,7 +900,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">130</span>
 
     </aside>
 
@@ -769,6 +940,51 @@ aaaa-mm-jj</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getMoisSuivant">
+        getMoisSuivant()
+        <a href="classes/Outils-Utilitaires.html#method_getMoisSuivant" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">147</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retourne le mois suivant</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">getMoisSuivant</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mois</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$mois</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>le mois suivant</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_lesQteFraisValides">
         lesQteFraisValides()
         <a href="classes/Outils-Utilitaires.html#method_lesQteFraisValides" class="headerlink"><i class="fas fa-link"></i></a>
@@ -776,7 +992,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">185</span>
+    <span class="phpdocumentor-element-found-in__line">243</span>
 
     </aside>
 
@@ -823,7 +1039,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">245</span>
+    <span class="phpdocumentor-element-found-in__line">303</span>
 
     </aside>
 
@@ -858,7 +1074,7 @@ aaaa-mm-jj</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="resources/Outils/Utilitaires.php"><a href="files/resources-outils-utilitaires.html"><abbr title="resources/Outils/Utilitaires.php">Utilitaires.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">202</span>
+    <span class="phpdocumentor-element-found-in__line">260</span>
 
     </aside>
 
