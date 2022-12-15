@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 12 déc. 2022 à 20:32
+-- Généré le : jeu. 15 déc. 2022 à 18:04
 -- Version du serveur : 5.7.36
 -- Version de PHP : 8.1.0
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `comptable` (
 --
 
 INSERT INTO `comptable` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateembauche`, `email`, `codea2f`) VALUES
-('c-10', 'Robertores', 'Miguel', 'mrobertores', '$2y$10$bS57PwzrSk7v4n0Q7FMXoepGDfY9N9qHX4qMfUd8SibDChwxh/Dk2', '28 rue des pommes', '83200', 'Toulon', '2022-09-14', 'mrobertores@swiss-galaxy.com', '2070');
+('c-10', 'Robertores', 'Miguel', 'mrobertores', '$2y$10$bS57PwzrSk7v4n0Q7FMXoepGDfY9N9qHX4qMfUd8SibDChwxh/Dk2', '28 rue des pommes', '83200', 'Toulon', '2022-09-14', 'mrobertores@swiss-galaxy.com', '2743');
 
 -- --------------------------------------------------------
 
@@ -124,7 +124,6 @@ INSERT INTO `fichefrais` (`idvisiteur`, `mois`, `nbjustificatifs`, `montantvalid
 ('a131', '202209', 10, '3201.17', '2022-11-08', 'RB'),
 ('a131', '202210', 8, '4187.73', '2022-11-01', 'VA'),
 ('a131', '202211', 2, '3367.66', '2022-12-11', 'VA'),
-('a131', '202212', 0, '0.00', '2022-12-10', 'MP'),
 ('a17', '202009', 11, '2332.82', '2020-11-02', 'RB'),
 ('a17', '202010', 6, '3689.49', '2020-12-08', 'RB'),
 ('a17', '202011', 4, '4156.83', '2021-01-06', 'RB'),
@@ -1006,10 +1005,6 @@ INSERT INTO `lignefraisforfait` (`idvisiteur`, `mois`, `idfraisforfait`, `quanti
 ('a131', '202211', 'KM', 593),
 ('a131', '202211', 'NUI', 9),
 ('a131', '202211', 'REP', 15),
-('a131', '202212', 'ETP', 20),
-('a131', '202212', 'KM', 30),
-('a131', '202212', 'NUI', 40),
-('a131', '202212', 'REP', 50),
 ('a17', '202009', 'ETP', 5),
 ('a17', '202009', 'KM', 521),
 ('a17', '202009', 'NUI', 4),
@@ -2705,12 +2700,12 @@ INSERT INTO `lignefraisforfait` (`idvisiteur`, `mois`, `idfraisforfait`, `quanti
 ('d13', '202202', 'ETP', 17),
 ('d13', '202202', 'KM', 474),
 ('d13', '202202', 'NUI', 20),
-('d13', '202202', 'REP', 19);
-INSERT INTO `lignefraisforfait` (`idvisiteur`, `mois`, `idfraisforfait`, `quantite`) VALUES
+('d13', '202202', 'REP', 19),
 ('d13', '202203', 'ETP', 12),
 ('d13', '202203', 'KM', 378),
 ('d13', '202203', 'NUI', 4),
-('d13', '202203', 'REP', 4),
+('d13', '202203', 'REP', 4);
+INSERT INTO `lignefraisforfait` (`idvisiteur`, `mois`, `idfraisforfait`, `quantite`) VALUES
 ('d13', '202204', 'ETP', 10),
 ('d13', '202204', 'KM', 382),
 ('d13', '202204', 'NUI', 13),
@@ -3840,7 +3835,7 @@ CREATE TABLE IF NOT EXISTS `lignefraishorsforfait` (
   `montant` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idvisiteur` (`idvisiteur`,`mois`)
-) ENGINE=InnoDB AUTO_INCREMENT=2548 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2553 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `lignefraishorsforfait`
@@ -6390,10 +6385,6 @@ INSERT INTO `lignefraishorsforfait` (`id`, `idvisiteur`, `mois`, `libelle`, `dat
 (2538, 'f4', '202211', 'Taxi', '2022-11-18', '56.00'),
 (2539, 'f4', '202211', 'Voyage SNCF', '2022-11-07', '43.00'),
 (2540, 'f4', '202211', 'Location équipement vidéo/sonore', '2022-11-20', '173.00'),
-(2541, 'a131', '202212', 'REFUSE Chaussure', '2022-12-15', '150.00'),
-(2542, 'a131', '202212', 'Dentier', '2022-12-24', '20.00'),
-(2543, 'a131', '202212', 'Bouquet de fleur', '2022-12-06', '50.00'),
-(2544, 'a131', '202212', 'Uber', '2022-12-01', '55.00'),
 (2545, 'a17', '202212', 'Salle de rdv', '2022-12-10', '200.00'),
 (2546, 'a17', '202212', 'Fleurs', '2022-12-01', '50.00'),
 (2547, 'a17', '202212', 'Parking', '2022-12-06', '20.00');
@@ -6427,7 +6418,7 @@ CREATE TABLE IF NOT EXISTS `visiteur` (
 --
 
 INSERT INTO `visiteur` (`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateembauche`, `email`, `codea2f`, `idVehicule`) VALUES
-('a131', 'Villechalane', 'Louis', 'lvillachane', '$2y$10$Wtp1iWT.pT0QteevKj6NQ.6x.6nklsRwy516ja7Nb3Dx3sXiiz6l2', '8 rue des Charmes', '46000', 'Cahors', '2005-12-21', 'lvillachane@swiss-galaxy.com', '9589', '4E'),
+('a131', 'Villechalane', 'Louis', 'lvillachane', '$2y$10$Wtp1iWT.pT0QteevKj6NQ.6x.6nklsRwy516ja7Nb3Dx3sXiiz6l2', '8 rue des Charmes', '46000', 'Cahors', '2005-12-21', 'lvillachane@swiss-galaxy.com', '8886', '4E'),
 ('a17', 'Andre', 'David', 'dandre', '$2y$10$2C04j0ZIhp9AH5vrc7xSB.GHtOmR8Bh8Gk8Q4vgVib7hMTU2iZxOW', '1 rue Petit', '46200', 'Lalbenque', '1998-11-23', 'dandre@swiss-galaxy.com', '4523', '5/6D'),
 ('a55', 'Bedos', 'Christian', 'cbedos', '$2y$10$Kw8SYnNkO2cM15w4JPnQzum/.WQgHKYlBUQd9PjwlFaOsasfZClw.', '1 rue Peranud', '46250', 'Montcuq', '1995-01-12', 'cbedos@swiss-galaxy.com', NULL, '4D'),
 ('a93', 'Tusseau', 'Louis', 'ltusseau', '$2y$10$WprPFE.8RJJlCB.PlGEa2ObVIXsav5hsnFi37YnhIB8tten96GILW', '22 rue des Ternes', '46123', 'Gramat', '2000-05-01', 'ltusseau@swiss-galaxy.com', NULL, '4E'),
