@@ -2,7 +2,7 @@
 
 /**
  * Vue État de Frais
- *
+ * 
  * PHP Version 8
  *
  * @category  PPE
@@ -15,62 +15,220 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 
+use Outils\Utilitaires;
+
 ?>
-<hr>
-<div class="panel panel-primary">
-    <div class="panel-heading">Fiche de frais du mois
-        <?php echo $numMois . '-' . $numAnnee ?> : </div>
-    <div class="panel-body">
-        <strong><u>Etat :</u></strong> <?php echo $libEtat ?>
-        depuis le <?php echo $dateModif ?> <br>
-        <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
+
+<?php if ($uc === 'validerFrais') { ?>
+
+    <div class="row">
+        <h3>Eléments forfaitisés</h3>
+        <div class="col-md-4">
+            <form method="post" action="index.php?uc=validerFrais&action=CorrigerFraisForfait" role="form">
+                <fieldset>
+                    <?php
+                    foreach ($lesFraisForfait as $unFrais) {
+                        $idFrais = $unFrais['idfrais'];
+                        $libelle = htmlspecialchars($unFrais['libelle']);
+                        $quantite = $unFrais['quantite'];
+                        $fraiskm = $unFrais['fraiskm'];
+                        if ($idFrais !== 'KM') {
+                            $montant = $quantite * $unFrais['prix'];
+                        } else {
+                            $montant = $quantite * $fraiskm;
+                        }
+                        $montants += $montant;
+                        ?>
+                        <div class="form-group">
+                            <label for="idFrais"><?php echo $libelle ?></label>
+                            <input type="text" id="idFrais" name="lesFrais[<?php echo $idFrais ?>]" size="10" maxlength="5" value="<?php echo $quantite ?>" class="form-control">
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <button class="btn btn-success" name="corriger[<?php echo $idFrais ?>]" type="submit">Corriger</button>
+                    <button class="btn btn-danger" type="reset">Réinitialiser</button>
+                </fieldset>
+            </form>
+        </div>
     </div>
-</div>
-<div class="panel panel-info">
-    <div class="panel-heading">Eléments forfaitisés</div>
-    <table class="table table-bordered table-responsive">
-        <tr>
-            <?php
-            foreach ($lesFraisForfait as $unFraisForfait) {
-                $libelle = $unFraisForfait['libelle']; ?>
-                <th> <?php echo htmlspecialchars($libelle) ?></th>
-            <?php
-            }
-            ?>
-        </tr>
-        <tr>
-            <?php
-            foreach ($lesFraisForfait as $unFraisForfait) {
-                $quantite = $unFraisForfait['quantite']; ?>
-                <td class="qteForfait"><?php echo $quantite ?> </td>
-            <?php
-            }
-            ?>
-        </tr>
-    </table>
-</div>
-<div class="panel panel-info">
-    <div class="panel-heading">Descriptif des éléments hors forfait -
-        <?php echo $nbJustificatifs ?> justificatifs reçus</div>
-    <table class="table table-bordered table-responsive">
-        <tr>
-            <th class="date">Date</th>
-            <th class="libelle">Libellé</th>
-            <th class='montant'>Montant</th>
-        </tr>
-        <?php
-        foreach ($lesFraisHorsForfait as $unFraisHorsForfait) {
-            $date = $unFraisHorsForfait['date'];
-            $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
-            $montant = $unFraisHorsForfait['montant']; ?>
-            <tr>
-                <td><?php echo $date ?></td>
-                <td><?php echo $libelle ?></td>
-                <td><?php echo $montant ?></td>
-            </tr>
-        <?php
-        }
-        ?>
-    </table>
-</div>
-<a onclick="window.open('fpdf184/pdf.php?id=<?php echo $_SESSION['idVisiteur'] ?>&mois=<?php echo $_SESSION['date'] ?>')" class="btn btn-success">Télécharger le PDF</a>
+
+    <hr>
+
+    <form method="post" action="index.php?uc=validerFrais&action=CorrigerElemHorsForfait" role="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">Eléments hors-forfait</div>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>Date</th>
+                    <th>Libelle</th>
+                    <th>Montant</th>
+                    <th></th>
+                </tr>
+                <?php
+                foreach ($lesFraisHorsForfait as $frais) {
+                    $date = $frais['date'];
+                    $datee = Utilitaires::dateFrancaisVersAnglais($date);
+                    $libellehorsFrais = $frais['libelle'];
+                    $refus = 0;
+                    $montant = $frais['montant'];
+                    $id = $frais['id'];
+                    $pos = strpos($libellehorsFrais, 'REFUSE');
+                    if ($pos !== FALSE) {
+                        $montants += $refus;
+                ?>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label for="date"></label>
+                                    <input type="text" name="lesDates[<?php echo $id ?>]" size="10" maxlength="15" value="<?php echo $datee ?>" class="form-control" disabled="disabled">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="libelle"></label>
+                                    <input type="text" name="lesLibelles[<?php echo $id ?>]" size="15" maxlength="40" value="<?php echo $libellehorsFrais ?>" class="form-control" disabled="disabled">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="montant"></label>
+                                    <input type="text" name="lesMontants[<?php echo $id ?>]" size="10" maxlength="15" value="<?php echo $montant ?>" class="form-control" disabled="disabled"> €
+                                </div>
+                            </td>
+                            <td> Pas d'actions possibles après refus</td>
+                        <?php } else { 
+                            $montant = $frais['montant'];
+                            $montants += $montant;
+                            ?>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <label for="date"></label>
+                                    <input type="date" name="lesDates[<?php echo $id ?>]" size="10" maxlength="15" value="<?php echo $datee ?>" class="form-control">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="libelle"></label>
+                                    <input type="text" name="lesLibelles[<?php echo $id ?>]" size="15" maxlength="40" value="<?php echo $libellehorsFrais ?>" class="form-control">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <label for="montant"></label>
+                                    <input type="text" name="lesMontants[<?php echo $id ?>]" size="10" maxlength="15" value="<?php echo $montant ?>" class="form-control">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="container-fluid mt-20">
+                                    <input id="okElemHorsForf" name="corriger[<?php echo $id ?>]" type="submit" value="Corriger" class="btn btn-success" accept="" role="button">
+                                    <a href="index.php?uc=validerFrais&action=supprimerFrais&idFrais=<?php echo $id ?>&mois=<?php echo $frais['mois'] ?>&idVisiteur=<?php echo $_SESSION['idVisi'] ?> " type="reset" class="btn btn-danger" role="button" onclick="return confirm('Voulez-vous vraiment supprimer ou reporter ce frais hors forfait?');">Réinitialiser</a>
+                                </div>
+                            </td>
+                        <?php } ?>
+                        </tr>
+                    <?php } ?>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p>Nombre de justificatifs : </p>
+            </div>
+            <div class="col-md-1">
+                <input type="texte" name="nbJust" size="1" maxlength="15" value="<?php echo $lesInfosFicheFrais['nbJustificatifs'] ?>" class="form-control">
+            </div>
+        </div>
+    </form>
+    <form method="post" action="index.php?uc=validerFrais&action=Valider" role="form">
+        <input id="okFicheFrais" type="submit" value="Valider" class="btn btn-success" accept="" role="button" onclick="return confirm('Voulez-vous vraiment valider cette fiche de frais ?');">
+    </form>
+    </br></br>
+<?php } else { ?>
+    <div class="row">
+        <h3>Eléments forfaitisés</h3>
+        <div class="col-md-4">
+            <form method="post" role="form">
+                <fieldset>
+                    <?php
+                    foreach ($lesFraisForfait as $unFrais) {
+                        $idFrais = $unFrais['idfrais'];
+                        $libelle = htmlspecialchars($unFrais['libelle']);
+                        $quantite = $unFrais['quantite'];
+                        $fraiskm = $unFrais['fraiskm'];
+                        if($idFrais !== 'KM') {
+                            $montant = $quantite * $unFrais['prix'];
+                        } else {
+                            $montant = $quantite * $fraiskm;
+                        }
+                        $montants += $montant;
+                        ?>
+                        <div class="form-group">
+                            <label for="idFrais"><?php echo $libelle ?></label>
+                            <input type="text" id="idFrais" name="lesFrais[<?php echo $idFrais ?>]" size="10" maxlength="5" value="<?php echo $quantite ?>" class="form-control" disabled="disabled">
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <form method="post" role="form">
+        <div class="panel panel-info">
+            <div class="panel-heading">Eléments hors-forfait</div>
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>Date</th>
+                    <th>Libelle</th>
+                    <th>Montant</th>
+                </tr>
+                <?php
+                foreach ($lesFraisHorsForfait as $frais) {
+                    $date = $frais['date'];
+                    $datee = Utilitaires::dateFrancaisVersAnglais($date);
+                    $libellehorsFrais = $frais['libelle'];
+                    $montant = $frais['montant'];
+                    $id = $frais['id'];
+                    $montants += $montant;
+                ?>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label for="date"></label>
+                                <input type="date" name="lesDates[<?php echo $id ?>]" size="10" maxlength="15" value="<?php echo $datee ?>" class="form-control" disabled="disabled">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label for="libelle"></label>
+                                <input type="text" name="lesLibelles[<?php echo $id ?>]" size="15" maxlength="40" value="<?php echo $libellehorsFrais ?>" class="form-control" disabled="disabled">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label for="montant"></label>
+                                <input type="text" name="lesMontants[<?php echo $id ?>]" size="10" maxlength="15" value="<?php echo $montant ?>" class="form-control" disabled="disabled">
+                            </div>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p>Nombre de justificatifs : </p>
+            </div>
+            <div class="col-md-1">
+                <input type="texte" name="nbJust" size="1" maxlength="15" value="<?php echo $lesInfosFicheFrais['nbJustificatifs'] ?>" class="form-control" disabled="disabled">
+            </div>
+        </div>
+    </form>
+    <form method="post" action="index.php?uc=suivrePaiement&action=Valider" role="form">
+        <input id="okFicheFrais" type="submit" value="Mettre en Paiement" class="btn btn-success" accept="" role="button" onclick="return confirm('Voulez-vous vraiment mettre en paiement cette fiche de frais ?');">
+    </form></br></br>
+<?php
+}
